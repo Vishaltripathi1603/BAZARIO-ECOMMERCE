@@ -1,0 +1,74 @@
+[
+  {
+    "page": "home",
+    "url": "http://localhost:3000/",
+    "device": "mobile",
+    "performance": 95,
+    "accessibility": 95,
+    "bestPractices": 100,
+    "seo": 100
+  },
+  {
+    "page": "home",
+    "url": "http://localhost:3000/",
+    "device": "desktop",
+    "performance": 100,
+    "accessibility": 95,
+    "bestPractices": 100,
+    "seo": 100
+  },
+  {
+    "page": "category",
+    "url": "http://localhost:3000/category/sustainable-bamboo",
+    "device": "mobile",
+    "performance": 96,
+    "accessibility": 95,
+    "bestPractices": 100,
+    "seo": 100
+  },
+  {
+    "page": "category",
+    "url": "http://localhost:3000/category/sustainable-bamboo",
+    "device": "desktop",
+    "performance": 100,
+    "accessibility": 96,
+    "bestPractices": 100,
+    "seo": 100
+  },
+  {
+    "page": "product",
+    "url": "http://localhost:3000/products/bamboo-laptop-stand-riser",
+    "device": "mobile",
+    "performance": 95,
+    "accessibility": 96,
+    "bestPractices": 100,
+    "seo": 100
+  },
+  {
+    "page": "product",
+    "url": "http://localhost:3000/products/bamboo-laptop-stand-riser",
+    "device": "desktop",
+    "performance": 100,
+    "accessibility": 96,
+    "bestPractices": 100,
+    "seo": 100
+  },
+  {
+    "page": "blog",
+    "url": "http://localhost:3000/blog/why-choose-bamboo-over-plastic",
+    "device": "mobile",
+    "performance": 96,
+    "accessibility": 96,
+    "bestPractices": 100,
+    "seo": 100
+  },
+  {
+    "page": "blog",
+    "url": "http://localhost:3000/blog/why-choose-bamboo-over-plastic",
+    "device": "desktop",
+    "performance": 100,
+    "accessibility": 96,
+    "bestPractices": 100,
+    "seo": 100
+  }
+]

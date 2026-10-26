@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" fill="none">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#FBF9F5"/>
+      <stop offset="100%" stop-color="#EDE7DC"/>
+    </radialGradient>
+    <linearGradient id="bambooGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8CEAC"/>
+      <stop offset="50%" stop-color="#D4B483"/>
+      <stop offset="100%" stop-color="#B28C56"/>
+    </linearGradient>
+    <linearGradient id="bambooGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D9BA8F"/>
+      <stop offset="100%" stop-color="#9C733C"/>
+    </linearGradient>
+    <linearGradient id="greenAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3A7333"/>
+      <stop offset="100%" stop-color="#23461E"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#5C4D3C" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bgGrad)" />
+
+  <!-- Subtle Eco Pattern -->
+  <g opacity="0.06" stroke="#2D5A27" stroke-width="2">
+    <circle cx="100" cy="100" r="80"/>
+    <circle cx="700" cy="500" r="120"/>
+    <path d="M50 500 Q 200 450 350 520 T 650 480" />
+    <path d="M150 80 Q 300 130 450 70 T 750 110" />
+  </g>
+
+  <!-- Product Graphic -->
+  <g filter="url(#cardShadow)">
+    
+      <!-- 4 Toothbrushes -->
+      <g transform="translate(180, 110)">
+        <!-- Toothbrush 1 -->
+        <rect x="40" y="80" width="22" height="260" rx="11" fill="url(#bambooGrad1)" transform="rotate(-15 51 210)"/>
+        <rect x="42" y="60" width="18" height="40" rx="6" fill="#FFFFFF" opacity="0.9" transform="rotate(-15 51 210)"/>
+        <!-- Toothbrush 2 -->
+        <rect x="140" y="70" width="22" height="270" rx="11" fill="url(#bambooGrad2)" transform="rotate(-5 151 205)"/>
+        <rect x="142" y="50" width="18" height="40" rx="6" fill="#A7D7C5" opacity="0.9" transform="rotate(-5 151 205)"/>
+        <!-- Toothbrush 3 -->
+        <rect x="240" y="70" width="22" height="270" rx="11" fill="url(#bambooGrad1)" transform="rotate(5 251 205)"/>
+        <rect x="242" y="50" width="18" height="40" rx="6" fill="#D4E09B" opacity="0.9" transform="rotate(5 251 205)"/>
+        <!-- Toothbrush 4 -->
+        <rect x="340" y="80" width="22" height="260" rx="11" fill="url(#bambooGrad2)" transform="rotate(15 351 210)"/>
+        <rect x="342" y="60" width="18" height="40" rx="6" fill="#C9D6DF" opacity="0.9" transform="rotate(15 351 210)"/>
+      </g>
+    
+  </g>
+
+  <!-- Clean Bottom Product Label -->
+  <rect x="60" y="500" width="680" height="68" rx="14" fill="#FFFFFF" fill-opacity="0.85" stroke="#E2DAC9" stroke-width="1.5"/>
+  <circle cx="94" cy="534" r="16" fill="#2D5A27"/>
+  <path d="M88 534 L92 538 L100 530" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="124" y="530" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#1C1E1B">Bamboo Toothbrush Set (4-Pack)</text>
+  <text x="124" y="548" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="500" fill="#6B6255">Zero-Waste Oral Hygiene • 100% Sustainable Bamboo</text>
+  <rect x="620" y="518" width="100" height="32" rx="16" fill="#F0F4EF"/>
+  <text x="670" y="539" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#2D5A27">BAMBOONEST</text>
+</svg>

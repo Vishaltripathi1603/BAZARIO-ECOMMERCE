@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" fill="none">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#FBF9F5"/>
+      <stop offset="100%" stop-color="#EDE7DC"/>
+    </radialGradient>
+    <linearGradient id="bambooGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8CEAC"/>
+      <stop offset="50%" stop-color="#D4B483"/>
+      <stop offset="100%" stop-color="#B28C56"/>
+    </linearGradient>
+    <linearGradient id="bambooGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D9BA8F"/>
+      <stop offset="100%" stop-color="#9C733C"/>
+    </linearGradient>
+    <linearGradient id="greenAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3A7333"/>
+      <stop offset="100%" stop-color="#23461E"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#5C4D3C" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bgGrad)" />
+
+  <!-- Subtle Eco Pattern -->
+  <g opacity="0.06" stroke="#2D5A27" stroke-width="2">
+    <circle cx="100" cy="100" r="80"/>
+    <circle cx="700" cy="500" r="120"/>
+    <path d="M50 500 Q 200 450 350 520 T 650 480" />
+    <path d="M150 80 Q 300 130 450 70 T 750 110" />
+  </g>
+
+  <!-- Product Graphic -->
+  <g filter="url(#cardShadow)">
+    
+      <g transform="translate(180, 100)">
+        <!-- Left & Right frame poles -->
+        <rect x="40" y="40" width="22" height="300" rx="8" fill="url(#bambooGrad2)"/>
+        <rect x="380" y="40" width="22" height="300" rx="8" fill="url(#bambooGrad2)"/>
+        <!-- Top Shelf -->
+        <rect x="30" y="110" width="380" height="32" rx="8" fill="url(#bambooGrad1)" stroke="#8C6239" stroke-width="2"/>
+        <rect x="80" y="80" width="30" height="30" rx="6" fill="#A7D7C5" opacity="0.8"/>
+        <rect x="130" y="70" width="24" height="40" rx="4" fill="#E8CEAC"/>
+        <!-- Bottom Shelf -->
+        <rect x="30" y="240" width="380" height="32" rx="8" fill="url(#bambooGrad1)" stroke="#8C6239" stroke-width="2"/>
+        <rect x="80" y="195" width="60" height="45" rx="8" fill="#FFFBF5" stroke="#CCD5AE" stroke-width="2"/>
+        <rect x="180" y="190" width="40" height="50" rx="8" fill="#93B1A6"/>
+      </g>
+    
+  </g>
+
+  <!-- Clean Bottom Product Label -->
+  <rect x="60" y="500" width="680" height="68" rx="14" fill="#FFFFFF" fill-opacity="0.85" stroke="#E2DAC9" stroke-width="1.5"/>
+  <circle cx="94" cy="534" r="16" fill="#2D5A27"/>
+  <path d="M88 534 L92 538 L100 530" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="124" y="530" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#1C1E1B">Tiered Bamboo Bathroom Organizer Caddy</text>
+  <text x="124" y="548" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="500" fill="#6B6255">Water-Resistant Vanity Rack • 100% Sustainable Bamboo</text>
+  <rect x="620" y="518" width="100" height="32" rx="16" fill="#F0F4EF"/>
+  <text x="670" y="539" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#2D5A27">BAMBOONEST</text>
+</svg>

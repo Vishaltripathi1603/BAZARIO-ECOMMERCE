@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" fill="none">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#FBF9F5"/>
+      <stop offset="100%" stop-color="#EDE7DC"/>
+    </radialGradient>
+    <linearGradient id="bambooGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8CEAC"/>
+      <stop offset="50%" stop-color="#D4B483"/>
+      <stop offset="100%" stop-color="#B28C56"/>
+    </linearGradient>
+    <linearGradient id="bambooGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D9BA8F"/>
+      <stop offset="100%" stop-color="#9C733C"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#5C4D3C" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#bgGrad)" />
+  <g opacity="0.06" stroke="#2D5A27" stroke-width="2">
+    <circle cx="100" cy="100" r="80"/>
+    <circle cx="700" cy="500" r="120"/>
+    <path d="M50 500 Q 200 450 350 520 T 650 480" />
+    <path d="M150 80 Q 300 130 450 70 T 750 110" />
+  </g>
+
+  <g filter="url(#cardShadow)">
+    <g transform="translate(220, 120)">
+      <path d="M 60 140 Q 60 260 180 260 Q 300 260 300 140 Z" fill="url(#bambooGrad1)" stroke="#7A552F" stroke-width="4"/>
+      <ellipse cx="180" cy="140" rx="120" ry="40" fill="#D4B483" stroke="#7A552F" stroke-width="3"/>
+      <rect x="165" y="40" width="34" height="180" rx="17" fill="url(#bambooGrad2)" transform="rotate(15 182 130)"/>
+    </g>
+  </g>
+
+  <rect x="60" y="500" width="680" height="68" rx="14" fill="#FFFFFF" fill-opacity="0.85" stroke="#E2DAC9" stroke-width="1.5"/>
+  <circle cx="94" cy="534" r="16" fill="#8C6239"/>
+  <path d="M88 534 L92 538 L100 530" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="124" y="530" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#1C1E1B">Solid Bamboo Spice Mortar and Pestle</text>
+  <text x="124" y="548" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="500" fill="#6B6255">Culinary Herb Grinding Bowl • 100% Sustainable Bamboo</text>
+  <rect x="620" y="518" width="100" height="32" rx="16" fill="#F0F4EF"/>
+  <text x="670" y="539" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#2D5A27">BAMBOONEST</text>
+</svg>
