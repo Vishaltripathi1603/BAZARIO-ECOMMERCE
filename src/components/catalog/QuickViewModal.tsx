@@ -15,7 +15,7 @@ import {
   ArrowRight,
   ShieldCheck,
   Truck,
-  Leaf,
+  Sparkles,
 } from "lucide-react";
 
 function QuickViewDialogContent({
@@ -28,7 +28,7 @@ function QuickViewDialogContent({
   const { addToCart, toggleWishlist, isInWishlist, setIsCartOpen } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState(
-    product.colorOptions[0] || "Natural Moso"
+    product.colorOptions?.[0] || "Standard"
   );
 
   const isWishlisted = isInWishlist(product.id);
@@ -39,9 +39,14 @@ function QuickViewDialogContent({
     setIsCartOpen(true);
   };
 
+  const primaryImage = product.images?.[0] || {
+    url: "/images/categories/bamboo-cutting-boards.svg",
+    alt: product.name,
+  };
+
   return (
     <div
-      className="w-full max-w-3xl bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-stone-200 dark:border-stone-800 overflow-hidden max-h-[90vh] flex flex-col md:flex-row relative animate-scaleUp"
+      className="w-full max-w-3xl bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden max-h-[90vh] flex flex-col md:flex-row relative animate-scaleUp"
       onClick={(e) => e.stopPropagation()}
     >
       {/* Close Button */}
@@ -49,82 +54,78 @@ function QuickViewDialogContent({
         type="button"
         onClick={onClose}
         aria-label="Close product quick view"
-        className="absolute top-4 right-4 z-10 p-2.5 rounded-full bg-white/90 dark:bg-stone-800/90 text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 shadow-md transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 min-h-[44px] min-w-[44px] flex items-center justify-center"
+        className="absolute top-4 right-4 z-10 p-2.5 rounded-full bg-white/90 dark:bg-slate-800/90 text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 shadow-md transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 min-h-[44px] min-w-[44px] flex items-center justify-center"
       >
         <X className="w-5 h-5" />
       </button>
 
       {/* Product Media Column */}
-      <div className="relative md:w-1/2 aspect-square md:aspect-auto bg-stone-100 dark:bg-stone-800">
+      <div className="relative md:w-1/2 aspect-square md:aspect-auto bg-slate-100 dark:bg-slate-800">
         <Image
-          src={product.images[0].url}
-          alt={product.images[0].alt}
+          src={primaryImage.url}
+          alt={primaryImage.alt || product.name}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover"
+          className="object-contain p-6"
         />
-        <div className="absolute top-4 left-4 flex flex-col gap-1.5">
-          <span className="px-3 py-1 text-xs font-bold rounded-full bg-white/90 dark:bg-stone-900/90 text-emerald-800 dark:text-emerald-400 shadow-sm border border-stone-200/80">
-            {product.subcategory}
+        {product.tier === "flagship" && (
+          <span className="absolute top-4 left-4 inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-teal-600 text-white shadow-sm">
+            <Sparkles className="w-3 h-3 text-amber-300" /> 3D Flagship
           </span>
-        </div>
-        <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-white/90 dark:bg-stone-900/90 backdrop-blur-sm border border-stone-200/80 text-[11px] text-stone-600 dark:text-stone-300 flex items-center gap-2">
-          <Leaf className="w-4 h-4 text-emerald-700 shrink-0" />
-          <span className="truncate">{product.materials}</span>
-        </div>
+        )}
       </div>
 
-      {/* Product Info & Controls Column */}
-      <div className="p-6 sm:p-8 md:w-1/2 overflow-y-auto flex flex-col justify-between space-y-6">
+      {/* Product Info Column */}
+      <div className="p-6 md:p-8 md:w-1/2 flex flex-col justify-between overflow-y-auto">
         <div className="space-y-4">
-          <div className="flex items-center gap-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-400">
-              SKU: {product.sku}
-            </span>
-            <span className="text-stone-300 dark:text-stone-700">•</span>
-            <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 dark:text-emerald-400">
-              <CheckCircle2 className="w-3 h-3" />
-              In Stock
-            </span>
+          <div>
+            <div className="flex items-center justify-between text-xs text-slate-500 mb-1">
+              <span className="font-bold text-teal-700 dark:text-teal-400 uppercase tracking-wider">
+                {product.brand}
+              </span>
+              <span>SKU: {product.sku}</span>
+            </div>
+            <h3 className="text-xl font-black text-slate-900 dark:text-white leading-snug">
+              {product.name}
+            </h3>
           </div>
 
-          <h2
-            id="quick-view-title"
-            className="text-xl sm:text-2xl font-black text-stone-900 dark:text-white leading-tight"
-          >
-            {product.name}
-          </h2>
-
-          {/* Price */}
           <div className="flex items-baseline gap-2">
-            <span className="text-2xl font-black text-stone-900 dark:text-white">
+            <span className="text-2xl font-black text-slate-900 dark:text-white">
               ₹{product.price.toLocaleString("en-IN")}
             </span>
-            <span className="text-xs text-stone-500 dark:text-stone-400 font-medium">
-              (Inclusive of all taxes)
-            </span>
+            {product.originalPrice && product.originalPrice > product.price && (
+              <span className="text-xs text-slate-400 line-through">
+                ₹{product.originalPrice.toLocaleString("en-IN")}
+              </span>
+            )}
+            {product.deal && (
+              <span className="text-xs font-black px-2 py-0.5 rounded-full bg-amber-400 text-slate-950 uppercase">
+                {product.deal.badge}
+              </span>
+            )}
           </div>
 
-          <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed line-clamp-3">
+          <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-3">
             {product.shortDescription}
           </p>
 
-          {/* Color Selector */}
+          {/* Color / Finish */}
           {product.colorOptions && product.colorOptions.length > 0 && (
-            <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 block">
-                Finish: <span className="text-stone-900 dark:text-white normal-case">{selectedColor}</span>
-              </label>
+            <div className="space-y-1.5">
+              <span className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                Finish: {selectedColor}
+              </span>
               <div className="flex flex-wrap gap-2">
                 {product.colorOptions.map((c) => (
                   <button
                     key={c}
                     type="button"
                     onClick={() => setSelectedColor(c)}
-                    className={`px-3 py-1.5 text-xs font-semibold rounded-lg border transition min-h-[36px] ${
+                    className={`px-2.5 py-1 text-xs rounded-lg border font-semibold transition ${
                       selectedColor === c
-                        ? "border-emerald-800 bg-emerald-50 text-emerald-900 dark:border-emerald-400 dark:bg-emerald-950 dark:text-emerald-300 ring-2 ring-emerald-800/20"
-                        : "border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-300 hover:border-stone-400"
+                        ? "border-teal-600 bg-teal-50 dark:bg-teal-950 text-teal-800 dark:text-teal-300 ring-2 ring-teal-600/30"
+                        : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300"
                     }`}
                   >
                     {c}
@@ -133,79 +134,66 @@ function QuickViewDialogContent({
               </div>
             </div>
           )}
-
-          {/* Quantity Stepper */}
-          <div className="space-y-2">
-            <label className="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 block">
-              Quantity
-            </label>
-            <div className="flex items-center gap-3">
-              <div className="flex items-center border border-stone-200 dark:border-stone-700 rounded-xl bg-stone-50 dark:bg-stone-800">
-                <button
-                  type="button"
-                  onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                  aria-label="Decrease quantity"
-                  className="p-2.5 text-stone-600 dark:text-stone-300 hover:text-stone-900 min-h-[44px] min-w-[44px] flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700"
-                >
-                  <Minus className="w-4 h-4" />
-                </button>
-                <span className="w-10 text-center font-bold text-sm text-stone-900 dark:text-white">
-                  {quantity}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => setQuantity((q) => Math.min(10, q + 1))}
-                  aria-label="Increase quantity"
-                  className="p-2.5 text-stone-600 dark:text-stone-300 hover:text-stone-900 min-h-[44px] min-w-[44px] flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700"
-                >
-                  <Plus className="w-4 h-4" />
-                </button>
-              </div>
-
-              {/* Wishlist Button */}
-              <button
-                type="button"
-                onClick={() => toggleWishlist(product.id)}
-                aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
-                className={`p-3 rounded-xl border transition min-h-[44px] min-w-[44px] flex items-center justify-center ${
-                  isWishlisted
-                    ? "border-rose-300 bg-rose-50 text-rose-600 dark:border-rose-900 dark:bg-rose-950 dark:text-rose-400"
-                    : "border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-300 hover:border-stone-400 hover:text-rose-600"
-                }`}
-              >
-                <Heart className={`w-5 h-5 ${isWishlisted ? "fill-current" : ""}`} />
-              </button>
-            </div>
-          </div>
         </div>
 
-        {/* Action CTAs */}
-        <div className="space-y-3 pt-4 border-t border-stone-200 dark:border-stone-800">
-          <button
-            type="button"
-            onClick={handleAdd}
-            className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white font-bold text-sm shadow-lg hover:shadow-xl transition min-h-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700"
-          >
-            <ShoppingBag className="w-4 h-4" />
-            <span>Add to Bag • ₹{(product.price * quantity).toLocaleString("en-IN")}</span>
-          </button>
+        <div className="pt-6 border-t border-slate-100 dark:border-slate-800 space-y-3 mt-4">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center border border-slate-300 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 overflow-hidden shadow-sm h-11">
+              <button
+                type="button"
+                onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                disabled={quantity <= 1}
+                aria-label="Decrease quantity"
+                className="px-3 h-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-40"
+              >
+                <Minus className="w-3.5 h-3.5" />
+              </button>
+              <span className="w-8 text-center text-xs font-bold text-slate-900 dark:text-white">
+                {quantity}
+              </span>
+              <button
+                type="button"
+                onClick={() => setQuantity((q) => Math.min(10, q + 1))}
+                disabled={quantity >= 10}
+                aria-label="Increase quantity"
+                className="px-3 h-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-40"
+              >
+                <Plus className="w-3.5 h-3.5" />
+              </button>
+            </div>
 
-          <Link
-            href={`/products/${product.slug}`}
-            onClick={onClose}
-            className="w-full flex items-center justify-center gap-1.5 py-2.5 text-xs font-bold text-stone-600 dark:text-stone-300 hover:text-emerald-800 dark:hover:text-emerald-400 transition"
-          >
-            <span>View Full Specifications & Ethos</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
+            <button
+              type="button"
+              onClick={handleAdd}
+              className="flex-1 h-11 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-2"
+            >
+              <ShoppingBag className="w-4 h-4" />
+              <span>Add to Bag</span>
+            </button>
 
-          <div className="flex items-center justify-center gap-4 text-[10px] text-stone-400 pt-1">
-            <span className="flex items-center gap-1">
-              <Truck className="w-3 h-3" /> Free Shipping ₹999+
-            </span>
-            <span className="flex items-center gap-1">
-              <ShieldCheck className="w-3 h-3" /> 1-Year Craft Warranty
-            </span>
+            <button
+              type="button"
+              onClick={() => toggleWishlist(product.id)}
+              aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
+              className={`w-11 h-11 rounded-xl border flex items-center justify-center transition ${
+                isWishlisted
+                  ? "bg-rose-50 border-rose-300 text-rose-600"
+                  : "border-slate-300 dark:border-slate-700 text-slate-600 hover:text-rose-600"
+              }`}
+            >
+              <Heart className={`w-4 h-4 ${isWishlisted ? "fill-rose-600" : ""}`} />
+            </button>
+          </div>
+
+          <div className="pt-2 text-center">
+            <Link
+              href={`/p/${product.slug}`}
+              onClick={onClose}
+              className="inline-flex items-center gap-1 text-xs font-bold text-teal-700 dark:text-teal-400 hover:underline"
+            >
+              <span>View Full Technical Product Page</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
         </div>
       </div>
@@ -215,17 +203,6 @@ function QuickViewDialogContent({
 
 export default function QuickViewModal() {
   const { quickViewProduct, setQuickViewProduct } = useCart();
-
-  useEffect(() => {
-    if (quickViewProduct) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [quickViewProduct]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -243,12 +220,11 @@ export default function QuickViewModal() {
     <div
       role="dialog"
       aria-modal="true"
-      aria-labelledby="quick-view-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/70 backdrop-blur-sm animate-fadeIn"
+      aria-label="Quick View Modal"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-md animate-fadeIn"
       onClick={() => setQuickViewProduct(null)}
     >
       <QuickViewDialogContent
-        key={quickViewProduct.id}
         product={quickViewProduct}
         onClose={() => setQuickViewProduct(null)}
       />

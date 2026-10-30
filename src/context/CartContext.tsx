@@ -41,7 +41,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<CartItem[]>(() => {
     if (typeof window !== "undefined") {
       try {
-        const saved = localStorage.getItem("bamboonest_cart");
+        const saved =
+          localStorage.getItem("bazario_cart") ||
+          localStorage.getItem("bamboonest_cart");
         if (saved) return JSON.parse(saved);
       } catch {
         // ignore storage access issues
@@ -53,7 +55,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const [wishlist, setWishlist] = useState<string[]>(() => {
     if (typeof window !== "undefined") {
       try {
-        const saved = localStorage.getItem("bamboonest_wishlist");
+        const saved =
+          localStorage.getItem("bazario_wishlist") ||
+          localStorage.getItem("bamboonest_wishlist");
         if (saved) return JSON.parse(saved);
       } catch {
         // ignore storage access issues
@@ -74,7 +78,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   // Sync to localStorage
   useEffect(() => {
     try {
-      localStorage.setItem("bamboonest_cart", JSON.stringify(items));
+      localStorage.setItem("bazario_cart", JSON.stringify(items));
     } catch {
       // ignore
     }
@@ -82,13 +86,17 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     try {
-      localStorage.setItem("bamboonest_wishlist", JSON.stringify(wishlist));
+      localStorage.setItem("bazario_wishlist", JSON.stringify(wishlist));
     } catch {
       // ignore
     }
   }, [wishlist]);
 
-  const addToast = (title: string, description?: string, type: "success" | "info" | "warning" = "success") => {
+  const addToast = (
+    title: string,
+    description?: string,
+    type: "success" | "info" | "warning" = "success"
+  ) => {
     const id = Date.now().toString() + Math.random().toString().slice(2, 6);
     setToasts((prev) => [...prev, { id, title, description, type }]);
     setTimeout(() => {
@@ -101,7 +109,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   };
 
   const addToCart = (product: Product, quantity = 1, selectedColor?: string) => {
-    const color = selectedColor || product.colorOptions[0] || "Default";
+    const color = selectedColor || product.colorOptions?.[0] || "Standard";
     setItems((prev) => {
       const existingIdx = prev.findIndex(
         (item) => item.product.id === product.id && item.selectedColor === color
@@ -115,7 +123,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     });
     addToast(
       "Added to Bag",
-      `${product.name} (${color}) added to your shopping bag.`,
+      `${product.name} added to your shopping bag.`,
       "success"
     );
   };
@@ -124,20 +132,30 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     setItems((prev) =>
       prev.filter(
         (item) =>
-          !(item.product.id === productId && (!selectedColor || item.selectedColor === selectedColor))
+          !(
+            item.product.id === productId &&
+            (!selectedColor || item.selectedColor === selectedColor)
+          )
       )
     );
     addToast("Item Removed", "Product removed from shopping bag.", "info");
   };
 
-  const updateQuantity = (productId: string, selectedColor: string | undefined, newQty: number) => {
+  const updateQuantity = (
+    productId: string,
+    selectedColor: string | undefined,
+    newQty: number
+  ) => {
     if (newQty <= 0) {
       removeFromCart(productId, selectedColor);
       return;
     }
     setItems((prev) =>
       prev.map((item) => {
-        if (item.product.id === productId && (!selectedColor || item.selectedColor === selectedColor)) {
+        if (
+          item.product.id === productId &&
+          (!selectedColor || item.selectedColor === selectedColor)
+        ) {
           return { ...item, quantity: newQty };
         }
         return item;
@@ -155,7 +173,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         addToast("Removed from Wishlist", "Item removed from saved favorites.", "info");
         return prev.filter((id) => id !== productId);
       } else {
-        addToast("Saved to Wishlist", "Item saved for your next mindful visit.", "success");
+        addToast("Saved to Wishlist", "Item saved for your next visit.", "success");
         return [...prev, productId];
       }
     });
@@ -165,25 +183,28 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const applyPromoCode = (code: string) => {
     const normalized = code.trim().toUpperCase();
-    if (normalized === "BAMBOO10" || normalized === "ECO10") {
+    if (normalized === "BAZARIO10" || normalized === "BAMBOO10" || normalized === "ECO10") {
       setPromoCode(normalized);
       setDiscountPercent(10);
       setPromoError(null);
-      addToast("Coupon Applied!", "10% sustainability discount applied to your order.", "success");
+      addToast("Coupon Applied!", "10% discount applied to your order.", "success");
       return true;
-    } else if (normalized === "BAMBOO20") {
+    } else if (normalized === "BAZARIO20" || normalized === "BAMBOO20") {
       setPromoCode(normalized);
       setDiscountPercent(20);
       setPromoError(null);
-      addToast("Coupon Applied!", "20% Earth Day discount applied to your order.", "success");
+      addToast("Coupon Applied!", "20% discount applied to your order.", "success");
       return true;
     } else {
-      setPromoError("Invalid discount code. Try 'BAMBOO10' for 10% off!");
+      setPromoError("Invalid discount code. Try 'BAZARIO10' for 10% off!");
       return false;
     }
   };
 
-  const subtotal = items.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+  const subtotal = items.reduce(
+    (sum, item) => sum + item.product.price * item.quantity,
+    0
+  );
   const discountAmount = Math.round((subtotal * discountPercent) / 100);
   const freeShippingThreshold = 999;
   const shipping = subtotal === 0 || subtotal >= freeShippingThreshold ? 0 : 99;

@@ -12,6 +12,7 @@ import {
   CheckCircle2,
   Sparkles,
   Truck,
+  ShieldCheck,
 } from "lucide-react";
 
 interface ProductDetailActionsProps {
@@ -29,7 +30,7 @@ export default function ProductDetailActions({ product }: ProductDetailActionsPr
 
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState<string>(
-    product.colorOptions[0] || "Natural Moso"
+    product.colorOptions?.[0] || "Standard"
   );
 
   const isWishlisted = isInWishlist(product.id);
@@ -46,33 +47,32 @@ export default function ProductDetailActions({ product }: ProductDetailActionsPr
 
   return (
     <div className="space-y-6 pt-2">
-      {/* Finish / Color Variant Selector */}
+      {/* Finish / Variant Selector */}
       {product.colorOptions && product.colorOptions.length > 0 && (
         <div className="space-y-2.5">
           <div className="flex items-center justify-between text-xs">
-            <span className="font-bold uppercase tracking-wider text-stone-600 dark:text-stone-400">
+            <span className="font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">
               Selected Finish:
             </span>
-            <span className="font-semibold text-emerald-800 dark:text-emerald-400">
+            <span className="font-semibold text-teal-700 dark:text-teal-400">
               {selectedColor}
             </span>
           </div>
           <div className="flex flex-wrap gap-2.5">
-            {product.colorOptions.map((c) => {
-              const isSelected = selectedColor === c;
+            {product.colorOptions.map((color) => {
+              const isSelected = selectedColor === color;
               return (
                 <button
-                  key={c}
+                  key={color}
                   type="button"
-                  onClick={() => setSelectedColor(c)}
-                  className={`px-4 py-2.5 rounded-xl text-xs font-bold border transition min-h-[44px] flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 ${
+                  onClick={() => setSelectedColor(color)}
+                  className={`px-3.5 py-2 text-xs font-semibold rounded-xl border transition-all min-h-[44px] ${
                     isSelected
-                      ? "border-emerald-800 bg-emerald-50 text-emerald-950 dark:border-emerald-400 dark:bg-emerald-950 dark:text-emerald-200 ring-2 ring-emerald-800/20 shadow-sm"
-                      : "border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-300 hover:border-stone-400 bg-white dark:bg-stone-800"
+                      ? "border-teal-600 bg-teal-50 dark:bg-teal-950 text-teal-800 dark:text-teal-300 ring-2 ring-teal-600/30 font-bold"
+                      : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:border-slate-400"
                   }`}
                 >
-                  {isSelected && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />}
-                  <span>{c}</span>
+                  {color}
                 </button>
               );
             })}
@@ -80,91 +80,88 @@ export default function ProductDetailActions({ product }: ProductDetailActionsPr
         </div>
       )}
 
-      {/* Quantity & Wishlist Bar */}
-      <div className="flex items-center gap-4">
-        <div className="space-y-1.5">
-          <span className="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 block">
-            Quantity
-          </span>
-          <div className="flex items-center border border-stone-200 dark:border-stone-700 rounded-xl bg-white dark:bg-stone-850 shadow-sm">
+      {/* Quantity & Cart Buttons */}
+      <div className="space-y-3.5">
+        <div className="flex items-center gap-3">
+          {/* Quantity Selector */}
+          <div className="flex items-center border border-slate-300 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 overflow-hidden shadow-sm h-12">
             <button
               type="button"
               onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-              aria-label="Decrease item quantity"
-              className="p-3 text-stone-600 dark:text-stone-300 hover:text-stone-900 min-h-[44px] min-w-[44px] flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700"
+              disabled={quantity <= 1}
+              aria-label="Decrease quantity"
+              className="px-3.5 h-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition flex items-center justify-center min-w-[44px]"
             >
               <Minus className="w-4 h-4" />
             </button>
-            <span className="w-12 text-center font-bold text-base text-stone-900 dark:text-white">
+            <span className="w-12 text-center text-sm font-bold text-slate-900 dark:text-white">
               {quantity}
             </span>
             <button
               type="button"
               onClick={() => setQuantity((q) => Math.min(10, q + 1))}
-              aria-label="Increase item quantity"
-              className="p-3 text-stone-600 dark:text-stone-300 hover:text-stone-900 min-h-[44px] min-w-[44px] flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700"
+              disabled={quantity >= 10}
+              aria-label="Increase quantity"
+              className="px-3.5 h-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition flex items-center justify-center min-w-[44px]"
             >
               <Plus className="w-4 h-4" />
             </button>
           </div>
-        </div>
 
-        {/* Wishlist Heart Button */}
-        <div className="space-y-1.5 flex-1">
-          <span className="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 block">
-            Save For Later
-          </span>
+          {/* Add to Bag Button */}
+          <button
+            type="button"
+            onClick={handleAddToCart}
+            className="flex-1 h-12 rounded-xl bg-teal-700 hover:bg-teal-800 active:bg-teal-900 text-white font-bold text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
+          >
+            <ShoppingBag className="w-4 h-4" />
+            <span>Add to Shopping Bag</span>
+          </button>
+
+          {/* Wishlist Button */}
           <button
             type="button"
             onClick={() => toggleWishlist(product.id)}
-            aria-label={isWishlisted ? "Remove from saved favorites" : "Save to favorites"}
-            className={`w-full py-2.5 px-4 rounded-xl border font-bold text-xs flex items-center justify-center gap-2 min-h-[46px] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 ${
+            aria-label={
               isWishlisted
-                ? "border-rose-300 bg-rose-50 text-rose-700 dark:border-rose-900 dark:bg-rose-950 dark:text-rose-400"
-                : "border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-850 text-stone-700 dark:text-stone-200 hover:border-rose-300 hover:text-rose-600"
+                ? `Remove ${product.name} from wishlist`
+                : `Save ${product.name} to wishlist`
+            }
+            className={`w-12 h-12 rounded-xl border flex items-center justify-center transition-all shadow-sm ${
+              isWishlisted
+                ? "bg-rose-50 dark:bg-rose-950/40 border-rose-300 dark:border-rose-700 text-rose-600"
+                : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-rose-600 hover:border-rose-300"
             }`}
           >
-            <Heart className={`w-4 h-4 ${isWishlisted ? "fill-current" : ""}`} />
-            <span>{isWishlisted ? "In Wishlist" : "Add to Wishlist"}</span>
+            <Heart
+              className={`w-5 h-5 ${
+                isWishlisted ? "fill-rose-600 text-rose-600" : ""
+              }`}
+            />
           </button>
         </div>
-      </div>
 
-      {/* Main Buy Buttons */}
-      <div className="flex flex-col sm:flex-row items-center gap-3">
-        <button
-          type="button"
-          onClick={handleAddToCart}
-          className="w-full sm:flex-1 py-4 px-6 rounded-2xl bg-emerald-800 hover:bg-emerald-900 text-white font-bold text-sm shadow-xl hover:shadow-2xl transition flex items-center justify-center gap-2 min-h-[50px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 active:scale-[0.99]"
-        >
-          <ShoppingBag className="w-4 h-4" />
-          <span>Add to Bag • ₹{(product.price * quantity).toLocaleString("en-IN")}</span>
-        </button>
-
+        {/* Instant Buy Now Button */}
         <button
           type="button"
           onClick={handleBuyNow}
-          className="w-full sm:flex-1 py-4 px-6 rounded-2xl bg-amber-500 hover:bg-amber-600 text-stone-950 font-bold text-sm shadow-lg hover:shadow-xl transition flex items-center justify-center gap-2 min-h-[50px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 active:scale-[0.99]"
+          className="w-full h-12 rounded-xl bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-slate-950 font-black text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
         >
-          <Zap className="w-4 h-4 fill-current" />
-          <span>Instant Checkout</span>
+          <Zap className="w-4 h-4 fill-slate-950" />
+          <span>Buy Now &bull; Instant Academic Checkout</span>
         </button>
       </div>
 
-      {/* Free Shipping Highlight Banner */}
-      <div className="p-3.5 rounded-2xl bg-emerald-50/80 dark:bg-emerald-950/40 border border-emerald-200/60 dark:border-emerald-800/50 flex items-center gap-3 text-xs text-emerald-900 dark:text-emerald-300">
-        <Truck className="w-4 h-4 text-emerald-700 shrink-0" />
-        <span>
-          <strong>Free Pan-India Delivery:</strong> Orders with this item qualify for zero-cost climate-neutral doorstep courier shipping.
-        </span>
-      </div>
-
-      {/* Promo Code Hint */}
-      <div className="flex items-center gap-2 text-xs text-stone-500 dark:text-stone-400">
-        <Sparkles className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-        <span>
-          Use code <strong className="text-stone-800 dark:text-stone-200 font-mono">BAMBOO10</strong> at checkout for 10% off your entire order.
-        </span>
+      {/* Trust & Delivery Micro-Badges */}
+      <div className="pt-4 border-t border-slate-200 dark:border-slate-800 grid grid-cols-2 gap-3 text-xs text-slate-600 dark:text-slate-400">
+        <div className="flex items-center gap-2">
+          <Truck className="w-4 h-4 text-teal-600" />
+          <span>Free Pan-India Delivery on &ge; ₹999</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <ShieldCheck className="w-4 h-4 text-teal-600" />
+          <span>Academic Prototype Demo</span>
+        </div>
       </div>
     </div>
   );

@@ -1,410 +1,366 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
+import dynamic from "next/dynamic";
 import {
   ArrowRight,
-  Leaf,
+  Sparkles,
+  Percent,
   ShieldCheck,
-  RotateCcw,
-  TreePine,
-  CheckCircle2,
+  Compass,
+  GraduationCap,
+  Layers,
+  ChevronRight,
   BookOpen,
 } from "lucide-react";
-import { getFeaturedProducts, getAllCategories, getAllBlogPosts } from "@/lib/data";
+import {
+  getAllDepartments,
+  getFlagshipDepartments,
+  getDealProducts,
+  getFlagshipProducts,
+  getAllBlogPosts,
+} from "@/lib/data";
 import ProductCard from "@/components/catalog/ProductCard";
+import { SITE_CONFIG } from "@/../config/site";
+
+import Hero3DWrapper from "@/components/3d/Hero3DWrapper";
 
 export default function HomePage() {
-  const featured = getFeaturedProducts();
-  const categories = getAllCategories();
+  const departments = getAllDepartments();
+  const flagshipDepts = getFlagshipDepartments();
+  const dealProducts = getDealProducts(8);
+  const flagshipProducts = getFlagshipProducts();
   const blogs = getAllBlogPosts();
 
+  // Flagship subsets
+  const bambooProducts = flagshipProducts
+    .filter((p) => p.departmentSlug === "sustainable-bamboo")
+    .slice(0, 4);
+  const deskProducts = flagshipProducts
+    .filter((p) => p.departmentSlug === "sustainable-desk-accessories")
+    .slice(0, 4);
+
   return (
-    <div className="space-y-16 sm:space-y-24 pb-16">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden pt-8 sm:pt-14 pb-12 sm:pb-20 border-b border-stone-200/80 dark:border-stone-800">
+    <div className="space-y-16 sm:space-y-24 pb-20">
+      {/* 1. Hero Section with Interactive 3D Scene */}
+      <section className="relative overflow-hidden pt-6 sm:pt-12 pb-12 sm:pb-20 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-b from-slate-100/60 via-white to-slate-50 dark:from-slate-900/50 dark:via-slate-900 dark:to-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            {/* Left Column: Heading and CTAs */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 text-emerald-900 dark:bg-emerald-950/80 dark:text-emerald-300 text-xs font-bold tracking-wide">
-                <Leaf className="w-4 h-4 text-emerald-800 dark:text-emerald-400" aria-hidden="true" />
-                <span>Certified Renewable Moso Bamboo</span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left Column: Heading, Subtitle & CTAs */}
+            <div className="lg:col-span-6 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-100/90 text-teal-900 dark:bg-teal-950/80 dark:text-teal-300 text-xs font-bold tracking-wide">
+                <Sparkles className="w-4 h-4 text-teal-700 dark:text-teal-400" aria-hidden="true" />
+                <span>Next-Gen E-Commerce Architecture &bull; 26 Departments</span>
               </div>
 
-              {/* Single H1 on Page */}
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-stone-900 dark:text-white tracking-tight leading-[1.12]">
-                Sustainable Bamboo for the Way You{" "}
-                <span className="text-emerald-800 dark:text-emerald-400 underline decoration-amber-500/60 decoration-wavy decoration-2">
-                  Work and Live
+              {/* Exact Single H1 on Page */}
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.12]">
+                Everything You Need,{" "}
+                <span className="text-teal-700 dark:text-teal-400 underline decoration-amber-500/60 decoration-wavy decoration-2">
+                  Beautifully Delivered.
                 </span>
               </h1>
 
-              <p className="text-base sm:text-lg text-stone-600 dark:text-stone-300 leading-relaxed max-w-2xl">
-                Replace disposable petroleum plastics and chemically-treated hardwoods with handcrafted, carbon-sequestering bamboo essentials. Engineered for ergonomic home offices and zero-waste household living.
+              <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-xl">
+                Discover over 3,300 curated essentials across 26 marketplace departments. Featuring certified organic bamboo flagships, ergonomic work setups, and zero-compromise technical SEO architecture.
               </p>
 
-              <div className="flex flex-wrap items-center gap-4 pt-2">
+              <div className="flex flex-wrap items-center gap-3 pt-2">
                 <Link
-                  href="/products"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-800 text-white font-bold text-sm hover:bg-emerald-900 transition-all shadow-lg hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 min-h-[48px]"
+                  href="/departments"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold text-sm transition-all shadow-lg hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 min-h-[48px]"
                 >
-                  <span>Explore Catalog (32 Items)</span>
+                  <span>Explore 26 Departments</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
-                  href="/category/sustainable-desk-accessories"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white dark:bg-stone-800 text-stone-800 dark:text-stone-100 font-bold text-sm border border-stone-300 dark:border-stone-700 hover:bg-stone-50 dark:hover:bg-stone-700 transition min-h-[48px]"
+                  href="/departments/all"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-bold text-sm border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition min-h-[48px]"
                 >
-                  <span>Ergonomic Desk Goods</span>
+                  <Compass className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+                  <span>A-Z Directory (1,099 Categories)</span>
                 </Link>
               </div>
 
-              {/* Quick Trust Bullets */}
-              <div className="grid grid-cols-3 gap-3 pt-4 border-t border-stone-200 dark:border-stone-800 text-xs text-stone-600 dark:text-stone-400 font-medium">
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
-                  <span>Non-Panda Habitat</span>
+              {/* Quick Metrics */}
+              <div className="pt-4 grid grid-cols-3 gap-4 border-t border-slate-200 dark:border-slate-800 text-xs">
+                <div>
+                  <span className="block text-xl font-black text-slate-900 dark:text-white">26</span>
+                  <span className="text-slate-500">Departments</span>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
-                  <span>Zero Micro-Plastics</span>
+                <div>
+                  <span className="block text-xl font-black text-slate-900 dark:text-white">1,099</span>
+                  <span className="text-slate-500">Leaf Categories</span>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
-                  <span>Fast Pan-India Delivery</span>
+                <div>
+                  <span className="block text-xl font-black text-slate-900 dark:text-white">3,329</span>
+                  <span className="text-slate-500">Indexed Products</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Hero Visual Asset */}
-            <div className="lg:col-span-5">
-              <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-stone-200 dark:border-stone-800 bg-stone-100">
-                <Image
-                  src="/images/hero/hero-banner.svg"
-                  alt="BambooNest Sustainable Bamboo Lifestyle and Home Office Collection"
-                  fill
-                  priority // Hero LCP image priority strictly compliant
-                  sizes="(max-width: 1024px) 100vw, 42vw"
-                  className="object-cover"
-                />
-                <div className="absolute bottom-4 left-4 right-4 bg-white/95 dark:bg-stone-900/95 backdrop-blur-md rounded-2xl p-4 border border-stone-200/60 dark:border-stone-800/60 shadow-lg">
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="font-bold text-stone-900 dark:text-stone-100">
-                      Featured Workspace Setup
-                    </span>
-                    <span className="text-emerald-800 dark:text-emerald-400 font-bold">
-                      100% Renewable
-                    </span>
-                  </div>
-                  <p className="text-[11px] text-stone-500 dark:text-stone-400 mt-0.5">
-                    Moso bamboo laptop riser + multi-slot desk organizer + Qi wireless charger
-                  </p>
-                </div>
+            {/* Right Column: Interactive 3D Canvas */}
+            <div className="lg:col-span-6 relative">
+              <div className="relative rounded-3xl bg-slate-100/80 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 p-2 shadow-2xl backdrop-blur-sm overflow-hidden">
+                <Hero3DWrapper />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Benefits Strip */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Key Sustainability Benefits">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="p-6 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-sm flex items-start gap-4">
-            <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950/80 flex items-center justify-center text-emerald-800 dark:text-emerald-400 shrink-0">
-              <Leaf className="w-5 h-5" />
+      {/* 2. Shop by Department (All 26 Departments Grid) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+          <div>
+            <div className="flex items-center gap-2 text-xs font-bold text-teal-700 dark:text-teal-400 uppercase tracking-wider">
+              <Layers className="w-4 h-4" />
+              <span>Crawlable Taxonomy</span>
             </div>
-            <div>
-              <h3 className="text-sm font-bold text-stone-900 dark:text-white">Rapidly Renewable</h3>
-              <p className="text-xs text-stone-500 dark:text-stone-400 mt-1">
-                Moso bamboo grows up to 90 cm a day, maturing in 3 to 5 years without clearing root systems.
-              </p>
-            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-1">
+              Shop by Department
+            </h2>
+            <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+              Every department features verified sub-departments and indexable leaf categories.
+            </p>
           </div>
-
-          <div className="p-6 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-sm flex items-start gap-4">
-            <div className="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-950/80 flex items-center justify-center text-amber-800 dark:text-amber-400 shrink-0">
-              <ShieldCheck className="w-5 h-5" />
-            </div>
-            <div>
-              <h3 className="text-sm font-bold text-stone-900 dark:text-white">Tougher Than Oak</h3>
-              <p className="text-xs text-stone-500 dark:text-stone-400 mt-1">
-                Dense cross-laminated grain fibers resist knife scarring, surface scratching, and warping.
-              </p>
-            </div>
-          </div>
-
-          <div className="p-6 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-sm flex items-start gap-4">
-            <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950/80 flex items-center justify-center text-emerald-800 dark:text-emerald-400 shrink-0">
-              <TreePine className="w-5 h-5" />
-            </div>
-            <div>
-              <h3 className="text-sm font-bold text-stone-900 dark:text-white">Carbon Negative</h3>
-              <p className="text-xs text-stone-500 dark:text-stone-400 mt-1">
-                Absorbs up to 35% more carbon dioxide and releases more oxygen than standard tree stands.
-              </p>
-            </div>
-          </div>
-
-          <div className="p-6 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-sm flex items-start gap-4">
-            <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-950/80 flex items-center justify-center text-blue-800 dark:text-blue-400 shrink-0">
-              <RotateCcw className="w-5 h-5" />
-            </div>
-            <div>
-              <h3 className="text-sm font-bold text-stone-900 dark:text-white">100% Circular</h3>
-              <p className="text-xs text-stone-500 dark:text-stone-400 mt-1">
-                Completely biodegradable in commercial compost without releasing toxic synthetic residues.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Four Dedicated Eco Collection Highlight Cards */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-labelledby="categories-heading">
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-400">
-            Curated Niches
-          </span>
-          <h2 id="categories-heading" className="text-2xl sm:text-3xl font-black text-stone-900 dark:text-white mt-1">
-            Explore Our 4 Dedicated Eco Collections
-          </h2>
-          <p className="text-sm text-stone-600 dark:text-stone-400 mt-2">
-            Structured for deep intent matching, intuitive navigation, and sustainable functionality across your home and office.
-          </p>
+          <Link
+            href="/departments/all"
+            className="inline-flex items-center gap-1.5 text-sm font-bold text-teal-700 dark:text-teal-400 hover:text-teal-800 transition"
+          >
+            <span>View Complete A-Z Directory</span>
+            <ChevronRight className="w-4 h-4" />
+          </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {categories.map((cat) => {
-            const bannerMap: Record<string, string> = {
-              "sustainable-bamboo": "/images/hero/category-bamboo.svg",
-              "sustainable-desk-accessories": "/images/hero/category-desk.svg",
-              "eco-dining-kitchenware": "/images/hero/category-dining.svg",
-              "bamboo-wellness-decor": "/images/hero/category-wellness.svg",
-            };
-            const bannerSrc = bannerMap[cat.slug] || "/images/hero/hero-banner.svg";
-
+        {/* 26 Departments Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3.5">
+          {departments.map((dept) => {
+            const isFlagship = dept.isFlagship;
             return (
-              <div
-                key={cat.slug}
-                className="group bg-white dark:bg-stone-900 rounded-3xl border border-stone-200 dark:border-stone-800 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              <Link
+                key={dept.slug}
+                href={`/d/${dept.slug}`}
+                className={`group p-4 rounded-2xl border transition-all duration-200 flex flex-col justify-between hover:shadow-lg ${
+                  isFlagship
+                    ? "bg-teal-50/60 dark:bg-teal-950/30 border-teal-300 dark:border-teal-800/80 hover:border-teal-500"
+                    : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-teal-500"
+                }`}
               >
                 <div>
-                  {/* Category Visual Banner */}
-                  <div className="relative aspect-[16/9] w-full bg-stone-100 dark:bg-stone-800 overflow-hidden">
-                    <Image
-                      src={bannerSrc}
-                      alt={cat.name}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  <div className="flex items-center justify-between mb-3">
+                    <span
+                      className="w-3.5 h-3.5 rounded-full"
+                      style={{ backgroundColor: dept.themeColor || "#0d9488" }}
                     />
-                    <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full bg-white/90 text-emerald-900 dark:bg-stone-900/90 dark:text-emerald-300 shadow-sm backdrop-blur-sm border border-stone-200/80">
-                        {cat.name}
+                    {isFlagship && (
+                      <span className="text-[10px] bg-amber-400 text-slate-950 px-1.5 py-0.2 rounded font-black tracking-wider uppercase">
+                        Flagship
                       </span>
-                    </div>
+                    )}
                   </div>
-
-                  <div className="p-7 space-y-4">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold text-emerald-800 dark:text-emerald-400">
-                        {cat.primaryKeyword}
-                      </span>
-                      <span className="text-xs text-stone-400 font-medium">8 Products</span>
-                    </div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-stone-900 dark:text-white group-hover:text-emerald-800 dark:group-hover:text-emerald-400 transition-colors">
-                      <Link href={`/category/${cat.slug}`}>
-                        {cat.headline}
-                      </Link>
-                    </h3>
-                    <p className="text-sm text-stone-600 dark:text-stone-400 line-clamp-3 leading-relaxed">
-                      {cat.introText}
-                    </p>
-
-                    <div className="flex flex-wrap gap-2 pt-1">
-                      {cat.subcategories.map((sub) => (
-                        <span
-                          key={sub}
-                          className="px-2.5 py-1 text-xs bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 rounded-lg"
-                        >
-                          {sub}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-teal-700 dark:group-hover:text-teal-400 line-clamp-2 transition-colors">
+                    {dept.name}
+                  </h3>
                 </div>
-
-                <div className="p-7 pt-0">
-                  <Link
-                    href={`/category/${cat.slug}`}
-                    className="inline-flex items-center gap-2 text-sm font-bold text-emerald-800 dark:text-emerald-400 group-hover:translate-x-1 transition-transform"
-                  >
-                    <span>Browse {cat.name} Collection</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
+                <div className="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+                  <span>{dept.productCount} items</span>
+                  <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform text-slate-400 group-hover:text-teal-600" />
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
       </section>
 
-      {/* Featured Products Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-labelledby="featured-heading">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+      {/* 3. Today's Flash Deals Row */}
+      {dealProducts.length > 0 && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-amber-500/10 via-teal-500/10 to-slate-900/10 border border-amber-500/30">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center font-black shadow-md">
+                  <Percent className="w-5 h-5" />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+                    Today&apos;s Flash Deals
+                  </h2>
+                  <p className="text-xs text-slate-600 dark:text-slate-400">
+                    Limited-time savings on flagship and curated catalog products.
+                  </p>
+                </div>
+              </div>
+              <Link
+                href="/deals"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs shadow-md transition"
+              >
+                <span>View All Flash Deals</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {dealProducts.slice(0, 4).map((product) => (
+                <ProductCard key={product.slug} product={product} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* 4. Flagship Showcase: Sustainable Bamboo */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-400">
-              Customer Favorites
-            </span>
-            <h2 id="featured-heading" className="text-2xl sm:text-3xl font-black text-stone-900 dark:text-white mt-1">
-              Featured Eco-Crafted Essentials
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Flagship Department 1</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-1">
+              Sustainable Bamboo Essentials
             </h2>
+            <p className="text-sm text-slate-600 dark:text-slate-400 mt-1 max-w-xl">
+              100% natural, certified renewable Moso bamboo. Antibacterial kitchen boards, organic dining sets, and eco storage.
+            </p>
           </div>
           <Link
-            href="/products"
-            className="inline-flex items-center gap-1.5 text-sm font-bold text-emerald-800 dark:text-emerald-400 hover:underline min-h-[44px]"
+            href="/d/sustainable-bamboo"
+            className="inline-flex items-center gap-1.5 text-sm font-bold text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 transition"
           >
-            <span>View All 32 Products</span>
-            <ArrowRight className="w-4 h-4" />
+            <span>Browse All Bamboo (108 Items)</span>
+            <ChevronRight className="w-4 h-4" />
           </Link>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featured.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          {bambooProducts.map((p) => (
+            <ProductCard key={p.slug} product={p} />
           ))}
         </div>
       </section>
 
-      {/* Why Sustainable Bamboo Section (Original Educational Content) */}
+      {/* 5. Flagship Showcase: Sustainable Desk Accessories */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-[#EDE7DC]/70 dark:bg-stone-800/60 border border-stone-300/60 dark:border-stone-700/60 p-8 sm:p-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-8 space-y-4">
-              <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-400">
-                Ethical Materials Philosophy
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-stone-900 dark:text-white">
-                Why Sustainable Bamboo Outperforms Traditional Timber and Plastic
-              </h2>
-              <p className="text-sm sm:text-base text-stone-700 dark:text-stone-300 leading-relaxed">
-                Modern consumption patterns generate millions of tons of single-use kitchen tools and brittle plastic desk organizers every year. By utilizing mature Moso bamboo culms harvested through cyclical thinning rotations, BambooNest products offer higher tensile strength than standard steel while completely avoiding toxic petrochemical additives. Because the underground root rhizomes remain completely undisturbed during harvest, bamboo forests continually prevent hillside soil erosion, filter local groundwater, and regenerate fresh shoots year after year.
-              </p>
-              <div className="pt-2">
-                <Link
-                  href="/about"
-                  className="inline-flex items-center gap-1.5 text-sm font-bold text-emerald-900 dark:text-emerald-300 underline underline-offset-4 hover:text-emerald-700"
-                >
-                  <span>Read Our Complete Sustainability Promise & Sourcing Audits</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-
-            <div className="lg:col-span-4 bg-white dark:bg-stone-900 p-6 rounded-2xl border border-stone-200 dark:border-stone-800 shadow-md space-y-3 text-xs">
-              <h3 className="font-bold text-stone-900 dark:text-white uppercase tracking-wider text-[11px]">
-                The Material Facts
-              </h3>
-              <div className="space-y-2 text-stone-600 dark:text-stone-400">
-                <div className="flex justify-between py-1 border-b border-stone-100 dark:border-stone-800">
-                  <span>Growth Velocity</span>
-                  <span className="font-semibold text-stone-900 dark:text-stone-200">Up to 90 cm / day</span>
-                </div>
-                <div className="flex justify-between py-1 border-b border-stone-100 dark:border-stone-800">
-                  <span>Harvest Cycle</span>
-                  <span className="font-semibold text-stone-900 dark:text-stone-200">3–5 years (vs. 40y oak)</span>
-                </div>
-                <div className="flex justify-between py-1 border-b border-stone-100 dark:border-stone-800">
-                  <span>Tensile Strength</span>
-                  <span className="font-semibold text-stone-900 dark:text-stone-200">28,000 psi</span>
-                </div>
-                <div className="flex justify-between py-1 border-b border-stone-100 dark:border-stone-800">
-                  <span>Pesticide Need</span>
-                  <span className="font-semibold text-stone-900 dark:text-stone-200">0% (Self-protecting kun)</span>
-                </div>
-                <div className="flex justify-between py-1">
-                  <span>Biodegradability</span>
-                  <span className="font-semibold text-emerald-700 dark:text-emerald-400">100% Compostable</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Blog Guides Teaser */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-labelledby="blog-heading">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-400">
-              Expert Knowledge Base
-            </span>
-            <h2 id="blog-heading" className="text-2xl sm:text-3xl font-black text-stone-900 dark:text-white mt-1">
-              Sustainable Living & Workspace Guides
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-teal-700 dark:text-teal-400 uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Flagship Department 2</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-1">
+              Sustainable Desk Accessories & Ergonomics
             </h2>
+            <p className="text-sm text-slate-600 dark:text-slate-400 mt-1 max-w-xl">
+              Precision-milled bamboo monitor risers, wireless dock stations, and cable organizers designed for focused workflows.
+            </p>
           </div>
           <Link
-            href="/blog"
-            className="inline-flex items-center gap-1.5 text-sm font-bold text-emerald-800 dark:text-emerald-400 hover:underline min-h-[44px]"
+            href="/d/sustainable-desk-accessories"
+            className="inline-flex items-center gap-1.5 text-sm font-bold text-teal-700 dark:text-teal-400 hover:text-teal-800 transition"
           >
-            <span>Read All Guides</span>
-            <ArrowRight className="w-4 h-4" />
+            <span>Browse All Desk Goods (108 Items)</span>
+            <ChevronRight className="w-4 h-4" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {blogs.map((post) => (
-            <article
-              key={post.slug}
-              className="group bg-white dark:bg-stone-900 rounded-2xl border border-stone-200 dark:border-stone-800 overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col justify-between"
-            >
-              <div>
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="block relative aspect-[16/10] bg-stone-100 overflow-hidden"
-                  tabIndex={-1}
-                  aria-hidden="true"
-                >
-                  <Image
-                    src={post.featuredImage.url}
-                    alt={post.featuredImage.alt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <span className="absolute top-3 left-3 px-2.5 py-1 text-[11px] font-bold rounded-full bg-white/90 dark:bg-stone-900/90 text-stone-800 dark:text-stone-200 shadow-sm">
-                    {post.category}
-                  </span>
-                </Link>
-
-                <div className="p-6">
-                  <div className="flex items-center gap-2 text-xs text-stone-400 mb-2">
-                    <BookOpen className="w-3.5 h-3.5" />
-                    <span>{post.readTime}</span>
-                    <span>•</span>
-                    <span>{post.publishDate}</span>
-                  </div>
-
-                  <h3 className="text-lg font-bold text-stone-900 dark:text-white group-hover:text-emerald-800 dark:group-hover:text-emerald-400 transition-colors line-clamp-2">
-                    <Link href={`/blog/${post.slug}`}>
-                      {post.title}
-                    </Link>
-                  </h3>
-
-                  <p className="mt-2 text-xs text-stone-600 dark:text-stone-400 line-clamp-3 leading-relaxed">
-                    {post.excerpt}
-                  </p>
-                </div>
-              </div>
-
-              <div className="p-6 pt-0 border-t border-stone-100 dark:border-stone-800/80 mt-4 flex items-center justify-between text-xs font-bold text-emerald-800 dark:text-emerald-400">
-                <span>Read Full Article</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </article>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {deskProducts.map((p) => (
+            <ProductCard key={p.slug} product={p} />
           ))}
         </div>
       </section>
+
+      {/* 6. Academic Project Ethos & White-Hat Verification */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="p-8 sm:p-10 rounded-3xl bg-slate-900 text-white shadow-xl">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center">
+                <GraduationCap className="w-5 h-5" />
+              </div>
+              <h3 className="text-lg font-bold">Academic Project Notice</h3>
+              <p className="text-xs text-slate-300 leading-relaxed">
+                {SITE_CONFIG.academicNotice} Developed for B.Tech CSE Sem VII, Group SEO-027 to demonstrate modern technical SEO, crawlability, and semantic e-commerce architecture.
+              </p>
+            </div>
+            <div className="space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-teal-400/20 text-teal-300 flex items-center justify-center">
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <h3 className="text-lg font-bold">Zero Fabricated Data</h3>
+              <p className="text-xs text-slate-300 leading-relaxed">
+                Strict adherence to Google Search Essentials: No fake 5-star aggregateRating schema, no duplicated supplier text, and transparent INR catalog pricing.
+              </p>
+            </div>
+            <div className="space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-emerald-400/20 text-emerald-300 flex items-center justify-center">
+                <Compass className="w-5 h-5" />
+              </div>
+              <h3 className="text-lg font-bold">&le; 3 Clicks &amp; Zero Orphans</h3>
+              <p className="text-xs text-slate-300 leading-relaxed">
+                With our 3-tier mega menu and A-Z directory, every single one of our 1,099 leaf categories is linked and indexable within 3 clicks of the home page.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Editorial Buying Guides */}
+      {blogs.length > 0 && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                Editorial &amp; Buying Guides
+              </h2>
+              <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                Authoritative research, care tips, and sustainable lifestyle articles.
+              </p>
+            </div>
+            <Link
+              href="/blog"
+              className="hidden sm:inline-flex items-center gap-1.5 text-sm font-bold text-teal-700 dark:text-teal-400 hover:text-teal-800"
+            >
+              <span>View All Guides</span>
+              <ChevronRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {blogs.slice(0, 3).map((post) => (
+              <article
+                key={post.slug}
+                className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between hover:border-teal-500 transition"
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between text-xs text-slate-500">
+                    <span className="font-semibold text-teal-600">{post.category}</span>
+                    <span>{post.readTime}</span>
+                  </div>
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white line-clamp-2">
+                    <Link href={`/blog/${post.slug}`} className="hover:text-teal-600 transition">
+                      {post.title}
+                    </Link>
+                  </h3>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed">
+                    {post.excerpt}
+                  </p>
+                </div>
+                <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+                  <span className="text-slate-500">{post.publishDate}</span>
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="font-bold text-teal-700 dark:text-teal-400 hover:underline inline-flex items-center gap-1"
+                  >
+                    <span>Read Article</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }

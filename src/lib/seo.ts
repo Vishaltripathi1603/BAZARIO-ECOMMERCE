@@ -1,21 +1,12 @@
-import { Product, Category, BlogPost } from "./types";
+import { Product, LeafCategory, BlogPost, Department, FAQItem } from "./types";
+import { SITE_CONFIG } from "@/../config/site";
 
-export const SITE_CONFIG = {
-  name: "BambooNest",
-  tagline: "Sustainable bamboo for the way you work and live.",
-  description:
-    "Handcrafted, sustainable bamboo home goods and ergonomic desk accessories designed for eco-conscious living and mindful productivity.",
-  siteUrl:
-    process.env.NEXT_PUBLIC_SITE_URL || "https://bamboonest-seo.vercel.app",
-  author: "Group SEO-027 (B.Tech CSE Sem VII)",
-  contactEmail: "support@bamboonest.example.com",
-  currency: "INR",
-};
+export { SITE_CONFIG };
 
 export function getBaseUrl(): string {
   return (
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-    "https://bamboonest-seo.vercel.app"
+    SITE_CONFIG.url.replace(/\/$/, "")
   );
 }
 
@@ -48,12 +39,12 @@ export function generateOrganizationSchema() {
     "@type": "Organization",
     name: SITE_CONFIG.name,
     url: base,
-    logo: `${base}/images/hero/hero-banner.svg`,
+    logo: `${base}/images/logo.svg`,
     description: SITE_CONFIG.description,
-    email: SITE_CONFIG.contactEmail,
+    email: SITE_CONFIG.contact.email,
     sameAs: [
-      "https://github.com/bamboonest-seo",
-      "https://twitter.com/bamboonest",
+      SITE_CONFIG.social.github,
+      SITE_CONFIG.social.twitter,
     ],
   };
 }
@@ -69,7 +60,7 @@ export function generateWebSiteSchema() {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: `${base}/products?search={search_term_string}`,
+        urlTemplate: `${base}/search?q={search_term_string}`,
       },
       "query-input": "required name=search_term_string",
     },
@@ -91,10 +82,10 @@ export function generateCollectionPageSchema(
     url: `${base}${url}`,
     mainEntity: {
       "@type": "ItemList",
-      itemListElement: products.map((product, index) => ({
+      itemListElement: products.slice(0, 24).map((product, index) => ({
         "@type": "ListItem",
         position: index + 1,
-        url: `${base}/products/${product.slug}`,
+        url: `${base}/p/${product.slug}`,
         name: product.name,
       })),
     },
@@ -114,13 +105,13 @@ export function generateProductSchema(product: Product) {
     sku: product.sku,
     brand: {
       "@type": "Brand",
-      name: SITE_CONFIG.name,
+      name: product.brand || SITE_CONFIG.name,
     },
     material: product.materials,
     offers: {
       "@type": "Offer",
-      url: `${base}/products/${product.slug}`,
-      priceCurrency: SITE_CONFIG.currency,
+      url: `${base}/p/${product.slug}`,
+      priceCurrency: SITE_CONFIG.currency.code,
       price: product.price,
       priceValidUntil: "2027-12-31",
       itemCondition: "https://schema.org/NewCondition",
@@ -132,7 +123,7 @@ export function generateProductSchema(product: Product) {
         name: SITE_CONFIG.name,
       },
     },
-    // Note: STRICT White-Hat Compliance: NO aggregateRating or fake reviews added.
+    // Strict White-Hat Compliance: NO aggregateRating or fake reviews added.
   };
 }
 
@@ -158,7 +149,7 @@ export function generateArticleSchema(post: BlogPost) {
       name: SITE_CONFIG.name,
       logo: {
         "@type": "ImageObject",
-        url: `${base}/images/hero/hero-banner.svg`,
+        url: `${base}/images/logo.svg`,
       },
     },
     mainEntityOfPage: {
@@ -168,11 +159,14 @@ export function generateArticleSchema(post: BlogPost) {
   };
 }
 
-export function generateFAQSchema(category: Category) {
+export function generateFAQSchema(
+  input: FAQItem[] | LeafCategory | { faqs: FAQItem[] }
+) {
+  const faqList = Array.isArray(input) ? input : input.faqs;
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: category.faqs.map((faq) => ({
+    mainEntity: faqList.map((faq) => ({
       "@type": "Question",
       name: faq.question,
       acceptedAnswer: {

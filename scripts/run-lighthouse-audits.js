@@ -5,17 +5,26 @@ const path = require('path');
 
 const targets = [
   { name: 'home', url: 'http://localhost:3000/' },
-  { name: 'category', url: 'http://localhost:3000/category/sustainable-bamboo' },
-  { name: 'product', url: 'http://localhost:3000/products/bamboo-laptop-stand-riser' },
-  { name: 'blog', url: 'http://localhost:3000/blog/why-choose-bamboo-over-plastic' }
+  { name: 'department', url: 'http://localhost:3000/d/sustainable-bamboo' },
+  { name: 'directory-all', url: 'http://localhost:3000/departments/all' },
+  { name: 'category', url: 'http://localhost:3000/c/sustainable-bamboo/kitchen-dining-bamboo/bamboo-cutting-boards' },
+  { name: 'flagship-product', url: 'http://localhost:3000/p/bamboo-laptop-stand-riser' },
+  { name: 'tier-b-product', url: 'http://localhost:3000/p/bamboo-cutting-boards-apexflow-v1' },
+  { name: 'blog', url: 'http://localhost:3000/blog/why-choose-bamboo-over-plastic' },
+  { name: 'auth-signin', url: 'http://localhost:3000/signin' },
+  { name: 'credits', url: 'http://localhost:3000/credits' }
 ];
 
 const results = [];
+const docsDir = path.join(__dirname, '../docs/lighthouse');
+if (!fs.existsSync(docsDir)) {
+  fs.mkdirSync(docsDir, { recursive: true });
+}
 
 targets.forEach(t => {
-  ['mobile', 'desktop'].forEach(preset => {
+  ['desktop', 'mobile'].forEach(preset => {
     console.log(`Running Lighthouse on ${t.name} (${preset})...`);
-    const outputPath = path.join(__dirname, `../docs/lighthouse/${t.name}-${preset}.json`);
+    const outputPath = path.join(docsDir, `${t.name}-${preset}.json`);
     const desktopFlag = preset === 'desktop' ? '--preset=desktop' : '';
     const cmd = `npx lighthouse "${t.url}" --chrome-flags="--headless --no-sandbox" --output=json --output-path="${outputPath}" --only-categories=performance,accessibility,best-practices,seo --quiet ${desktopFlag}`;
 

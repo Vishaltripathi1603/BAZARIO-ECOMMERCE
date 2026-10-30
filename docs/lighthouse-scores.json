@@ -2,54 +2,117 @@
   {
     "page": "home",
     "url": "http://localhost:3000/",
-    "device": "mobile",
+    "device": "desktop",
     "performance": 95,
-    "accessibility": 95,
+    "accessibility": 91,
     "bestPractices": 100,
     "seo": 100
   },
   {
     "page": "home",
     "url": "http://localhost:3000/",
-    "device": "desktop",
-    "performance": 100,
-    "accessibility": 95,
-    "bestPractices": 100,
-    "seo": 100
-  },
-  {
-    "page": "category",
-    "url": "http://localhost:3000/category/sustainable-bamboo",
     "device": "mobile",
-    "performance": 96,
-    "accessibility": 95,
+    "performance": 69,
+    "accessibility": 91,
     "bestPractices": 100,
     "seo": 100
   },
   {
-    "page": "category",
-    "url": "http://localhost:3000/category/sustainable-bamboo",
+    "page": "department",
+    "url": "http://localhost:3000/d/sustainable-bamboo",
     "device": "desktop",
-    "performance": 100,
-    "accessibility": 96,
-    "bestPractices": 100,
-    "seo": 100
-  },
-  {
-    "page": "product",
-    "url": "http://localhost:3000/products/bamboo-laptop-stand-riser",
-    "device": "mobile",
     "performance": 95,
-    "accessibility": 96,
+    "accessibility": 91,
     "bestPractices": 100,
     "seo": 100
   },
   {
-    "page": "product",
-    "url": "http://localhost:3000/products/bamboo-laptop-stand-riser",
+    "page": "department",
+    "url": "http://localhost:3000/d/sustainable-bamboo",
+    "device": "mobile",
+    "performance": 62,
+    "accessibility": 91,
+    "bestPractices": 100,
+    "seo": 100
+  },
+  {
+    "page": "directory-all",
+    "url": "http://localhost:3000/departments/all",
     "device": "desktop",
-    "performance": 100,
-    "accessibility": 96,
+    "performance": 99,
+    "accessibility": 90,
+    "bestPractices": 100,
+    "seo": 100
+  },
+  {
+    "page": "directory-all",
+    "url": "http://localhost:3000/departments/all",
+    "device": "mobile",
+    "performance": 71,
+    "accessibility": 89,
+    "bestPractices": 100,
+    "seo": 100
+  },
+  {
+    "page": "category",
+    "url": "http://localhost:3000/c/sustainable-bamboo/kitchen-dining-bamboo/bamboo-cutting-boards",
+    "device": "desktop",
+    "performance": 96,
+    "accessibility": 90,
+    "bestPractices": 100,
+    "seo": 100
+  },
+  {
+    "page": "category",
+    "url": "http://localhost:3000/c/sustainable-bamboo/kitchen-dining-bamboo/bamboo-cutting-boards",
+    "device": "mobile",
+    "performance": 71,
+    "accessibility": 90,
+    "bestPractices": 100,
+    "seo": 100
+  },
+  {
+    "page": "flagship-product",
+    "url": "http://localhost:3000/p/bamboo-laptop-stand-riser",
+    "device": "desktop",
+    "performance": 86,
+    "accessibility": 92,
+    "bestPractices": 100,
+    "seo": 100
+  },
+  {
+    "page": "flagship-product",
+    "url": "http://localhost:3000/p/bamboo-laptop-stand-riser",
+    "device": "mobile",
+    "performance": 56,
+    "accessibility": 91,
+    "bestPractices": 100,
+    "seo": 100
+  },
+  {
+    "page": "tier-b-product",
+    "url": "http://localhost:3000/p/bamboo-cutting-boards-apexflow-v1",
+    "device": "desktop",
+    "performance": 85,
+    "accessibility": 92,
+    "bestPractices": 100,
+    "seo": 100
+  },
+  {
+    "page": "tier-b-product",
+    "url": "http://localhost:3000/p/bamboo-cutting-boards-apexflow-v1",
+    "device": "mobile",
+    "performance": 52,
+    "accessibility": 91,
+    "bestPractices": 100,
+    "seo": 100
+  },
+  {
+    "page": "blog",
+    "url": "http://localhost:3000/blog/why-choose-bamboo-over-plastic",
+    "device": "desktop",
+    "performance": 99,
+    "accessibility": 92,
     "bestPractices": 100,
     "seo": 100
   },
@@ -57,17 +120,44 @@
     "page": "blog",
     "url": "http://localhost:3000/blog/why-choose-bamboo-over-plastic",
     "device": "mobile",
-    "performance": 96,
-    "accessibility": 96,
+    "performance": 76,
+    "accessibility": 91,
     "bestPractices": 100,
     "seo": 100
   },
   {
-    "page": "blog",
-    "url": "http://localhost:3000/blog/why-choose-bamboo-over-plastic",
+    "page": "auth-signin",
+    "url": "http://localhost:3000/signin",
     "device": "desktop",
-    "performance": 100,
-    "accessibility": 96,
+    "performance": 85,
+    "accessibility": 90,
+    "bestPractices": 100,
+    "seo": 58
+  },
+  {
+    "page": "auth-signin",
+    "url": "http://localhost:3000/signin",
+    "device": "mobile",
+    "performance": 56,
+    "accessibility": 89,
+    "bestPractices": 100,
+    "seo": 58
+  },
+  {
+    "page": "credits",
+    "url": "http://localhost:3000/credits",
+    "device": "desktop",
+    "performance": 99,
+    "accessibility": 91,
+    "bestPractices": 100,
+    "seo": 100
+  },
+  {
+    "page": "credits",
+    "url": "http://localhost:3000/credits",
+    "device": "mobile",
+    "performance": 68,
+    "accessibility": 91,
     "bestPractices": 100,
     "seo": 100
   }

@@ -1,0 +1,705 @@
+[
+  {
+    "id": "dept-1",
+    "slug": "sustainable-bamboo",
+    "name": "Sustainable Bamboo",
+    "tagline": "100% natural, certified renewable Moso bamboo essentials.",
+    "iconName": "Leaf",
+    "themeColor": "#059669",
+    "bannerImage": "/images/hero/category-bamboo.svg",
+    "isFlagship": true,
+    "subDepartments": [
+      "kitchen-dining-bamboo",
+      "zero-waste-bathroom",
+      "living-ambient-decor",
+      "storage-home-organization",
+      "travel-reusable-goods",
+      "eco-gift-sets-hampers"
+    ],
+    "featuredLeafCategories": [
+      "kitchen-dining-bamboo",
+      "zero-waste-bathroom",
+      "living-ambient-decor",
+      "storage-home-organization"
+    ],
+    "productCount": 108,
+    "metaTitle": "Sustainable Bamboo Store | Bazario",
+    "metaDescription": "Shop Sustainable Bamboo on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-2",
+    "slug": "sustainable-desk-accessories",
+    "name": "Sustainable Desk Accessories",
+    "tagline": "Ergonomic, renewable wooden accessories for mindful workstations.",
+    "iconName": "Monitor",
+    "themeColor": "#0284C7",
+    "bannerImage": "/images/hero/category-desk.svg",
+    "isFlagship": true,
+    "subDepartments": [
+      "laptop-monitor-risers",
+      "desk-organization-trays",
+      "cable-power-management",
+      "ergonomic-surface-accessories",
+      "desk-audio-acoustics",
+      "workplace-lighting-ambience"
+    ],
+    "featuredLeafCategories": [
+      "laptop-monitor-risers",
+      "desk-organization-trays",
+      "cable-power-management",
+      "ergonomic-surface-accessories"
+    ],
+    "productCount": 108,
+    "metaTitle": "Sustainable Desk Accessories Store | Bazario",
+    "metaDescription": "Shop Sustainable Desk Accessories on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-3",
+    "slug": "electronics",
+    "name": "Electronics",
+    "tagline": "Premium audio, wireless gear, streaming devices and smart electronics.",
+    "iconName": "Headphones",
+    "themeColor": "#6366F1",
+    "bannerImage": "/images/hero/category-electronics.svg",
+    "isFlagship": false,
+    "subDepartments": [
+      "audio-headphones",
+      "speakers-soundbars",
+      "wearable-tech",
+      "home-entertainment",
+      "power-portable-energy",
+      "smart-security-sensors",
+      "cables-connectivity"
+    ],
+    "featuredLeafCategories": [
+      "audio-headphones",
+      "speakers-soundbars",
+      "wearable-tech",
+      "home-entertainment"
+    ],
+    "productCount": 126,
+    "metaTitle": "Electronics Store | Bazario",
+    "metaDescription": "Shop Electronics on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-4",
+    "slug": "mobiles-accessories",
+    "name": "Mobiles & Accessories",
+    "tagline": "Smartphones, protection cases, mounts and essential mobile gadgets.",
+    "iconName": "Smartphone",
+    "themeColor": "#EC4899",
+    "bannerImage": "/images/hero/category-mobiles.svg",
+    "isFlagship": false,
+    "subDepartments": [
+      "phone-cases-protection",
+      "screen-lens-protectors",
+      "mounts-stands-grips",
+      "mobile-photography-vlogging",
+      "fast-chargers-car-adapters",
+      "stylus-gaming-triggers"
+    ],
+    "featuredLeafCategories": [
+      "phone-cases-protection",
+      "screen-lens-protectors",
+      "mounts-stands-grips",
+      "mobile-photography-vlogging"
+    ],
+    "productCount": 108,
+    "metaTitle": "Mobiles & Accessories Store | Bazario",
+    "metaDescription": "Shop Mobiles & Accessories on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-5",
+    "slug": "computers-laptops",
+    "name": "Computers & Laptops",
+    "tagline": "High-performance computing, ergonomic peripherals, and storage solutions.",
+    "iconName": "Laptop",
+    "themeColor": "#3B82F6",
+    "bannerImage": "/images/hero/category-computers.svg",
+    "isFlagship": false,
+    "subDepartments": [
+      "keyboards-typing-gear",
+      "mice-pointing-devices",
+      "laptop-bags-sleeves",
+      "external-storage-drives",
+      "hubs-docks-adapters",
+      "webcams-conferencing"
+    ],
+    "featuredLeafCategories": [
+      "keyboards-typing-gear",
+      "mice-pointing-devices",
+      "laptop-bags-sleeves",
+      "external-storage-drives"
+    ],
+    "productCount": 108,
+    "metaTitle": "Computers & Laptops Store | Bazario",
+    "metaDescription": "Shop Computers & Laptops on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-6",
+    "slug": "home-kitchen",
+    "name": "Home & Kitchen",
+    "tagline": "Culinary cookware, kitchen gadgets, smart appliances and dinnerware.",
+    "iconName": "Utensils",
+    "themeColor": "#EA580C",
+    "bannerImage": "/images/hero/category-kitchen.svg",
+    "isFlagship": false,
+    "subDepartments": [
+      "cookware-pans",
+      "kitchen-knives-cutlery",
+      "coffee-tea-brewing",
+      "food-storage-meal-prep",
+      "bake-ware-pastry-tools",
+      "dinnerware-glassware"
+    ],
+    "featuredLeafCategories": [
+      "cookware-pans",
+      "kitchen-knives-cutlery",
+      "coffee-tea-brewing",
+      "food-storage-meal-prep"
+    ],
+    "productCount": 108,
+    "metaTitle": "Home & Kitchen Store | Bazario",
+    "metaDescription": "Shop Home & Kitchen on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-7",
+    "slug": "furniture-living",
+    "name": "Furniture & Living",
+    "tagline": "Ergonomic chairs, desks, storage units and ambient modern living furniture.",
+    "iconName": "Armchair",
+    "themeColor": "#854D0E",
+    "bannerImage": "/images/hero/category-furniture.svg",
+    "isFlagship": false,
+    "subDepartments": [
+      "office-seating-chairs",
+      "desks-workstations",
+      "living-room-storage",
+      "bedroom-furniture",
+      "dining-bar-furniture",
+      "entryway-hallway"
+    ],
+    "featuredLeafCategories": [
+      "office-seating-chairs",
+      "desks-workstations",
+      "living-room-storage",
+      "bedroom-furniture"
+    ],
+    "productCount": 108,
+    "metaTitle": "Furniture & Living Store | Bazario",
+    "metaDescription": "Shop Furniture & Living on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-8",
+    "slug": "fashion-men",
+    "name": "Fashion Men",
+    "tagline": "Comfortable organic apparel, footwear, timepieces and active essentials.",
+    "iconName": "Shirt",
+    "themeColor": "#0F766E",
+    "bannerImage": "/images/hero/category-fashion-men.svg",
+    "isFlagship": false,
+    "subDepartments": [
+      "men-tops-shirts",
+      "men-pants-trousers",
+      "men-footwear-shoes",
+      "men-accessories-wallets",
+      "men-underwear-loungewear",
+      "men-activewear-gym"
+    ],
+    "featuredLeafCategories": [
+      "men-tops-shirts",
+      "men-pants-trousers",
+      "men-footwear-shoes",
+      "men-accessories-wallets"
+    ],
+    "productCount": 108,
+    "metaTitle": "Fashion Men Store | Bazario",
+    "metaDescription": "Shop Fashion Men on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-9",
+    "slug": "fashion-women",
+    "name": "Fashion Women",
+    "tagline": "Conscious wardrobe essentials, versatile footwear, jewelry and lifestyle bags.",
+    "iconName": "ShoppingBag",
+    "themeColor": "#DB2777",
+    "bannerImage": "/images/hero/category-fashion-women.svg",
+    "isFlagship": false,
+    "subDepartments": [
+      "women-dresses-jumpsuits",
+      "women-tops-blouses",
+      "women-bottoms-pants",
+      "women-footwear-sandals",
+      "women-bags-totes",
+      "women-jewelry-accents"
+    ],
+    "featuredLeafCategories": [
+      "women-dresses-jumpsuits",
+      "women-tops-blouses",
+      "women-bottoms-pants",
+      "women-footwear-sandals"
+    ],
+    "productCount": 108,
+    "metaTitle": "Fashion Women Store | Bazario",
+    "metaDescription": "Shop Fashion Women on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-10",
+    "slug": "kids-baby",
+    "name": "Kids & Baby",
+    "tagline": "Non-toxic baby care, organic apparel, educational play and nursery gear.",
+    "iconName": "Baby",
+    "themeColor": "#F59E0B",
+    "bannerImage": "/images/hero/category-kids.svg",
+    "isFlagship": false,
+    "subDepartments": [
+      "baby-feeding-weaning",
+      "nursery-sleep",
+      "baby-apparel-rompers",
+      "diapering-bath-care",
+      "montessori-sensory-toys",
+      "travel-stroller-gear"
+    ],
+    "featuredLeafCategories": [
+      "baby-feeding-weaning",
+      "nursery-sleep",
+      "baby-apparel-rompers",
+      "diapering-bath-care"
+    ],
+    "productCount": 108,
+    "metaTitle": "Kids & Baby Store | Bazario",
+    "metaDescription": "Shop Kids & Baby on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-11",
+    "slug": "beauty-personal-care",
+    "name": "Beauty & Personal Care",
+    "tagline": "Clean dermatological skincare, organic grooming and wellness cosmetics.",
+    "iconName": "Sparkles",
+    "themeColor": "#BE185D",
+    "bannerImage": "/images/hero/category-beauty.svg",
+    "isFlagship": false,
+    "subDepartments": [
+      "facial-skincare",
+      "haircare-styling",
+      "body-care-hygiene",
+      "mens-grooming",
+      "oral-care-clean",
+      "tools-applicators"
+    ],
+    "featuredLeafCategories": [
+      "facial-skincare",
+      "haircare-styling",
+      "body-care-hygiene",
+      "mens-grooming"
+    ],
+    "productCount": 108,
+    "metaTitle": "Beauty & Personal Care Store | Bazario",
+    "metaDescription": "Shop Beauty & Personal Care on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-12",
+    "slug": "health-wellness",
+    "name": "Health & Wellness",
+    "tagline": "Vitamins, ergonomic wellness devices, hydration and personal monitoring.",
+    "iconName": "HeartPulse",
+    "themeColor": "#10B981",
+    "bannerImage": "/images/hero/category-health.svg",
+    "isFlagship": false,
+    "subDepartments": [
+      "supplements-nutrition",
+      "pain-relief-recovery",
+      "health-monitoring-devices",
+      "sleep-respiratory-care",
+      "hydration-filtration",
+      "first-aid-sanitization"
+    ],
+    "featuredLeafCategories": [
+      "supplements-nutrition",
+      "pain-relief-recovery",
+      "health-monitoring-devices",
+      "sleep-respiratory-care"
+    ],
+    "productCount": 108,
+    "metaTitle": "Health & Wellness Store | Bazario",
+    "metaDescription": "Shop Health & Wellness on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-13",
+    "slug": "sports-fitness",
+    "name": "Sports & Fitness",
+    "tagline": "Strength training, yoga gear, recovery equipment and athletic accessories.",
+    "iconName": "Dumbbell",
+    "themeColor": "#F97316",
+    "bannerImage": "/images/hero/category-sports.svg",
+    "isFlagship": false,
+    "subDepartments": [
+      "yoga-mindful-movement",
+      "home-gym-strength",
+      "cardio-endurance",
+      "hydration-gym-accessories",
+      "racket-sports-games",
+      "outdoor-running-gear"
+    ],
+    "featuredLeafCategories": [
+      "yoga-mindful-movement",
+      "home-gym-strength",
+      "cardio-endurance",
+      "hydration-gym-accessories"
+    ],
+    "productCount": 108,
+    "metaTitle": "Sports & Fitness Store | Bazario",
+    "metaDescription": "Shop Sports & Fitness on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-14",
+    "slug": "outdoors-travel",
+    "name": "Outdoors & Travel",
+    "tagline": "Camping gear, rugged backpacks, outdoor illumination and travel tools.",
+    "iconName": "Compass",
+    "themeColor": "#047857",
+    "bannerImage": "/images/hero/category-outdoors.svg",
+    "isFlagship": false,
+    "subDepartments": [
+      "camping-shelter",
+      "camp-cooking-water",
+      "outdoor-lighting",
+      "travel-luggage-organizers",
+      "hiking-daypacks-navigation",
+      "outdoor-furniture-shade"
+    ],
+    "featuredLeafCategories": [
+      "camping-shelter",
+      "camp-cooking-water",
+      "outdoor-lighting",
+      "travel-luggage-organizers"
+    ],
+    "productCount": 108,
+    "metaTitle": "Outdoors & Travel Store | Bazario",
+    "metaDescription": "Shop Outdoors & Travel on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-15",
+    "slug": "books-stationery",
+    "name": "Books & Stationery",
+    "tagline": "Fine writing instruments, notebooks, journals and organizational stationery.",
+    "iconName": "BookOpen",
+    "themeColor": "#B45309",
+    "bannerImage": "/images/hero/category-books.svg",
+    "isFlagship": false,
+    "subDepartments": [
+      "notebooks-planners",
+      "fine-writing-instruments",
+      "desk-stationery-clips",
+      "reading-book-accessories",
+      "art-supplies-lettering",
+      "filing-document-storage"
+    ],
+    "featuredLeafCategories": [
+      "notebooks-planners",
+      "fine-writing-instruments",
+      "desk-stationery-clips",
+      "reading-book-accessories"
+    ],
+    "productCount": 108,
+    "metaTitle": "Books & Stationery Store | Bazario",
+    "metaDescription": "Shop Books & Stationery on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-16",
+    "slug": "toys-games",
+    "name": "Toys & Games",
+    "tagline": "Board games, brain puzzles, creative building sets and family entertainment.",
+    "iconName": "Gamepad2",
+    "themeColor": "#8B5CF6",
+    "bannerImage": "/images/hero/category-toys.svg",
+    "isFlagship": false,
+    "subDepartments": [
+      "board-games-strategy",
+      "brain-teasers-puzzles",
+      "creative-building-sets",
+      "stem-science-kits",
+      "arts-crafts-clay",
+      "outdoor-yard-play"
+    ],
+    "featuredLeafCategories": [
+      "board-games-strategy",
+      "brain-teasers-puzzles",
+      "creative-building-sets",
+      "stem-science-kits"
+    ],
+    "productCount": 108,
+    "metaTitle": "Toys & Games Store | Bazario",
+    "metaDescription": "Shop Toys & Games on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-17",
+    "slug": "grocery-gourmet",
+    "name": "Grocery & Gourmet",
+    "tagline": "Organic pantry staples, artisan honey, single-origin teas and healthy snacks.",
+    "iconName": "Coffee",
+    "themeColor": "#15803D",
+    "bannerImage": "/images/hero/category-grocery.svg",
+    "isFlagship": false,
+    "subDepartments": [
+      "artisan-coffee-beans",
+      "specialty-tea-tisanes",
+      "nuts-seeds-dried-fruits",
+      "artisan-oils-vinegars",
+      "raw-honey-spreads",
+      "gourmet-spices-seasonings"
+    ],
+    "featuredLeafCategories": [
+      "artisan-coffee-beans",
+      "specialty-tea-tisanes",
+      "nuts-seeds-dried-fruits",
+      "artisan-oils-vinegars"
+    ],
+    "productCount": 108,
+    "metaTitle": "Grocery & Gourmet Store | Bazario",
+    "metaDescription": "Shop Grocery & Gourmet on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-18",
+    "slug": "pet-supplies",
+    "name": "Pet Supplies",
+    "tagline": "Natural pet nutrition, ergonomic pet beds, grooming tools and interactive toys.",
+    "iconName": "Dog",
+    "themeColor": "#CA8A04",
+    "bannerImage": "/images/hero/category-pets.svg",
+    "isFlagship": false,
+    "subDepartments": [
+      "dog-essentials-toys",
+      "cat-furniture-play",
+      "natural-pet-grooming",
+      "pet-travel-carriers",
+      "healthy-pet-treats",
+      "pet-hygiene-cleaners"
+    ],
+    "featuredLeafCategories": [
+      "dog-essentials-toys",
+      "cat-furniture-play",
+      "natural-pet-grooming",
+      "pet-travel-carriers"
+    ],
+    "productCount": 108,
+    "metaTitle": "Pet Supplies Store | Bazario",
+    "metaDescription": "Shop Pet Supplies on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-19",
+    "slug": "automotive",
+    "name": "Automotive",
+    "tagline": "Car care, interior organizers, dashboard electronics and emergency gear.",
+    "iconName": "Car",
+    "themeColor": "#475569",
+    "bannerImage": "/images/hero/category-automotive.svg",
+    "isFlagship": false,
+    "subDepartments": [
+      "car-electronics-audio",
+      "interior-organizers-comfort",
+      "cleaning-detailing",
+      "sun-weather-protection",
+      "emergency-safety-roadside",
+      "air-quality-fragrance"
+    ],
+    "featuredLeafCategories": [
+      "car-electronics-audio",
+      "interior-organizers-comfort",
+      "cleaning-detailing",
+      "sun-weather-protection"
+    ],
+    "productCount": 108,
+    "metaTitle": "Automotive Store | Bazario",
+    "metaDescription": "Shop Automotive on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-20",
+    "slug": "tools-hardware",
+    "name": "Tools & Hardware",
+    "tagline": "Hand tools, precision toolkits, measuring gear and home workshop hardware.",
+    "iconName": "Wrench",
+    "themeColor": "#D97706",
+    "bannerImage": "/images/hero/category-tools.svg",
+    "isFlagship": false,
+    "subDepartments": [
+      "hand-tools-sets",
+      "measuring-layout-tools",
+      "tool-storage-belts",
+      "workshop-safety-gear",
+      "fasteners-hardware",
+      "adhesives-sealants"
+    ],
+    "featuredLeafCategories": [
+      "hand-tools-sets",
+      "measuring-layout-tools",
+      "tool-storage-belts",
+      "workshop-safety-gear"
+    ],
+    "productCount": 108,
+    "metaTitle": "Tools & Hardware Store | Bazario",
+    "metaDescription": "Shop Tools & Hardware on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-21",
+    "slug": "garden-outdoor-decor",
+    "name": "Garden & Outdoor Decor",
+    "tagline": "Planters, solar illumination, gardening tools and patio greenery.",
+    "iconName": "Trees",
+    "themeColor": "#16A34A",
+    "bannerImage": "/images/hero/category-garden.svg",
+    "isFlagship": false,
+    "subDepartments": [
+      "planters-pots",
+      "solar-garden-lights",
+      "hand-gardening-tools",
+      "watering-irrigation",
+      "patio-decor-accents",
+      "plant-care-soil"
+    ],
+    "featuredLeafCategories": [
+      "planters-pots",
+      "solar-garden-lights",
+      "hand-gardening-tools",
+      "watering-irrigation"
+    ],
+    "productCount": 108,
+    "metaTitle": "Garden & Outdoor Decor Store | Bazario",
+    "metaDescription": "Shop Garden & Outdoor Decor on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-22",
+    "slug": "office-products",
+    "name": "Office Products",
+    "tagline": "Productivity essentials, presentation gear, paper handling and shredders.",
+    "iconName": "Briefcase",
+    "themeColor": "#0284C7",
+    "bannerImage": "/images/hero/category-office.svg",
+    "isFlagship": false,
+    "subDepartments": [
+      "paper-handling-binding",
+      "presentation-boards",
+      "office-electronics",
+      "mailing-shipping-supplies",
+      "desk-filing-sorters",
+      "tape-adhesion-supplies"
+    ],
+    "featuredLeafCategories": [
+      "paper-handling-binding",
+      "presentation-boards",
+      "office-electronics",
+      "mailing-shipping-supplies"
+    ],
+    "productCount": 108,
+    "metaTitle": "Office Products Store | Bazario",
+    "metaDescription": "Shop Office Products on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-23",
+    "slug": "music-instruments",
+    "name": "Music & Audio Gear",
+    "tagline": "Musical instruments, podcasting gear, studio monitoring and accessories.",
+    "iconName": "Music",
+    "themeColor": "#9333EA",
+    "bannerImage": "/images/hero/category-music.svg",
+    "isFlagship": false,
+    "subDepartments": [
+      "string-instruments-care",
+      "keyboards-midi",
+      "studio-recording-gear",
+      "music-cables-adapters",
+      "acoustic-treatment-noise",
+      "drums-percussion"
+    ],
+    "featuredLeafCategories": [
+      "string-instruments-care",
+      "keyboards-midi",
+      "studio-recording-gear",
+      "music-cables-adapters"
+    ],
+    "productCount": 108,
+    "metaTitle": "Music & Audio Gear Store | Bazario",
+    "metaDescription": "Shop Music & Audio Gear on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-24",
+    "slug": "gaming-gear",
+    "name": "Gaming Gear",
+    "tagline": "Mechanical gaming accessories, low-latency audio, controllers and RGB gear.",
+    "iconName": "Gamepad",
+    "themeColor": "#7C3AED",
+    "bannerImage": "/images/hero/category-gaming.svg",
+    "isFlagship": false,
+    "subDepartments": [
+      "gaming-controllers-gamepads",
+      "gaming-audio-microphones",
+      "gaming-keyboards-mice",
+      "gaming-chairs-desks",
+      "console-accessories-mounts",
+      "rgb-gaming-lighting"
+    ],
+    "featuredLeafCategories": [
+      "gaming-controllers-gamepads",
+      "gaming-audio-microphones",
+      "gaming-keyboards-mice",
+      "gaming-chairs-desks"
+    ],
+    "productCount": 108,
+    "metaTitle": "Gaming Gear Store | Bazario",
+    "metaDescription": "Shop Gaming Gear on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-25",
+    "slug": "cameras-photography",
+    "name": "Cameras & Photography",
+    "tagline": "Optics, tripod stabilization, studio illumination and protective camera cases.",
+    "iconName": "Camera",
+    "themeColor": "#4338CA",
+    "bannerImage": "/images/hero/category-cameras.svg",
+    "isFlagship": false,
+    "subDepartments": [
+      "tripods-support",
+      "camera-bags-straps",
+      "lighting-softboxes",
+      "lens-filters-optics",
+      "power-batteries-memory",
+      "studio-backgrounds-backdrops"
+    ],
+    "featuredLeafCategories": [
+      "tripods-support",
+      "camera-bags-straps",
+      "lighting-softboxes",
+      "lens-filters-optics"
+    ],
+    "productCount": 108,
+    "metaTitle": "Cameras & Photography Store | Bazario",
+    "metaDescription": "Shop Cameras & Photography on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  },
+  {
+    "id": "dept-26",
+    "slug": "smart-home",
+    "name": "Smart Home & Automation",
+    "tagline": "Connected lighting, smart sockets, thermostats and voice-automated home controllers.",
+    "iconName": "Wifi",
+    "themeColor": "#0D9488",
+    "bannerImage": "/images/hero/category-smarthome.svg",
+    "isFlagship": false,
+    "subDepartments": [
+      "smart-lighting-bulbs",
+      "smart-plugs-power",
+      "climate-air-control",
+      "smart-access-security",
+      "smart-audio-hubs",
+      "smart-pet-plant-care"
+    ],
+    "featuredLeafCategories": [
+      "smart-lighting-bulbs",
+      "smart-plugs-power",
+      "climate-air-control",
+      "smart-access-security"
+    ],
+    "productCount": 108,
+    "metaTitle": "Smart Home & Automation Store | Bazario",
+    "metaDescription": "Shop Smart Home & Automation on Bazario. Explore top sub-departments, verified products, and fast pan-India delivery with transparent customer support."
+  }
+]

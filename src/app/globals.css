@@ -1,19 +1,30 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #FBF9F5;
-  --foreground: #1C1E1B;
-  --bamboo-primary: #2D5A27;
-  --bamboo-dark: #1E3F1A;
-  --wood-accent: #8C6239;
-  --sand-border: #E8E2D5;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --surface: #ffffff;
+  --surface-muted: #f1f5f9;
+  --border: #e2e8f0;
+  --brand-teal: #0f766e;
+  --brand-teal-hover: #115e59;
+}
+
+.dark {
+  --background: #020617;
+  --foreground: #f8fafc;
+  --surface: #0f172a;
+  --surface-muted: #1e293b;
+  --border: #334155;
+  --brand-teal: #14b8a6;
+  --brand-teal-hover: #2dd4bf;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-bamboo: var(--bamboo-primary);
-  --color-wood: var(--wood-accent);
 }
 
 body {
@@ -22,11 +33,17 @@ body {
   font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* Accessible outline styling */
 :focus-visible {
-  outline: 2px solid #2D5A27;
+  outline: 2px solid #0f766e;
+  outline-offset: 2px;
+}
+
+.dark :focus-visible {
+  outline: 2px solid #14b8a6;
   outline-offset: 2px;
 }
 
@@ -87,4 +104,13 @@ body {
 
 .animate-slideLeft {
   animation: slideLeft 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

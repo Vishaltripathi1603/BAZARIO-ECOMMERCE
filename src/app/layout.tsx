@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/seo/JsonLd";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { AuthProvider } from "@/context/AuthContext";
 import { CartProvider } from "@/context/CartContext";
 import CartDrawer from "@/components/cart/CartDrawer";
 import WishlistDrawer from "@/components/cart/WishlistDrawer";
@@ -19,13 +21,13 @@ import {
 
 const fontSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "600"], // max 2 font weights as strictly requested for performance
+  weight: ["400", "600"], // max 2 font weights as requested for speed
   display: "swap",
   variable: "--font-sans",
 });
 
 export const viewport: Viewport = {
-  themeColor: "#2D5A27",
+  themeColor: "#0f766e",
   width: "device-width",
   initialScale: 1,
 };
@@ -33,17 +35,18 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(getBaseUrl()),
   title: {
-    default: "BambooNest | Sustainable Bamboo Goods & Desk Accessories",
-    template: "%s | BambooNest",
+    default: `${SITE_CONFIG.name} | ${SITE_CONFIG.tagline}`,
+    template: `%s | ${SITE_CONFIG.name}`,
   },
   description: SITE_CONFIG.description,
   keywords: [
+    "Online Marketplace",
     "Sustainable Bamboo",
-    "Sustainable Desk Accessories",
-    "Bamboo Laptop Stand",
-    "Eco Friendly Office",
-    "Organic Kitchenware",
-    "Zero Waste Bathroom",
+    "Desk Accessories",
+    "Eco Living",
+    "Electronics",
+    "Home & Kitchen",
+    "Pan-India Delivery",
   ],
   authors: [{ name: SITE_CONFIG.author }],
   creator: SITE_CONFIG.name,
@@ -57,7 +60,7 @@ export const metadata: Metadata = {
     canonical: getBaseUrl(),
   },
   openGraph: {
-    title: "BambooNest | Sustainable Bamboo Goods & Desk Accessories",
+    title: `${SITE_CONFIG.name} | ${SITE_CONFIG.tagline}`,
     description: SITE_CONFIG.description,
     url: getBaseUrl(),
     siteName: SITE_CONFIG.name,
@@ -66,15 +69,15 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/images/hero/hero-banner.svg",
-        width: 800,
-        height: 600,
-        alt: "BambooNest - Sustainable Bamboo Goods and Desk Accessories",
+        width: 1200,
+        height: 630,
+        alt: `${SITE_CONFIG.name} - ${SITE_CONFIG.tagline}`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BambooNest | Sustainable Bamboo Goods & Desk Accessories",
+    title: `${SITE_CONFIG.name} | ${SITE_CONFIG.tagline}`,
     description: SITE_CONFIG.description,
     images: ["/images/hero/hero-banner.svg"],
   },
@@ -100,23 +103,27 @@ export default function RootLayout({
   const webSiteSchema = generateWebSiteSchema();
 
   return (
-    <html lang="en" className={`${fontSans.variable} scroll-smooth`}>
+    <html lang="en" className={`${fontSans.variable} scroll-smooth`} suppressHydrationWarning>
       <head>
         <JsonLd data={[orgSchema, webSiteSchema]} />
       </head>
-      <body className="min-h-screen flex flex-col bg-[#FBF9F5] text-[#1C1E1B] antialiased selection:bg-emerald-100 selection:text-emerald-900">
-        <CartProvider>
-          <Header />
-          <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
-            {children}
-          </main>
-          <Footer />
-          <CartDrawer />
-          <WishlistDrawer />
-          <CheckoutModal />
-          <QuickViewModal />
-          <ToastContainer />
-        </CartProvider>
+      <body className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased selection:bg-teal-200 selection:text-teal-900 font-sans">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <AuthProvider>
+            <CartProvider>
+              <Header />
+              <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
+                {children}
+              </main>
+              <Footer />
+              <CartDrawer />
+              <WishlistDrawer />
+              <CheckoutModal />
+              <QuickViewModal />
+              <ToastContainer />
+            </CartProvider>
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

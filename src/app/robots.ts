@@ -9,8 +9,18 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
       disallow: [
-        "/api/", // Reserved
-        "/_next/", // Next internal assets
+        "/api/",
+        "/_next/",
+        "/search",
+        "/signin",
+        "/signup",
+        "/forgot-password",
+        "/reset-password",
+        "/account",
+        "/account/",
+        "/checkout",
+        "/auth/",
+        "/*?*", // Prevent search crawler index bloat on dynamic filtered parameter combinations
       ],
     },
     sitemap: `${baseUrl}/sitemap.xml`,
